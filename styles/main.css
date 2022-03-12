@@ -1,5 +1,57 @@
 body
 {
-    background : blue;
+    background : black;
+    color : white;
     font-family : arial;
+    margin : 0;
+    padding : 0;
+}
+
+header
+{
+    padding : 6px 0px;
+}
+
+section
+{
+    height : 450px;
+}
+
+footer
+{
+    background : white;
+    color : black;
+    padding : 2px;
+}
+
+p
+{
+    padding : 2px;
+}
+
+ul
+{
+    margin : 8px;
+    list-style-type : none;
+    display : flex;
+    flex-direction : row;
+}
+
+li
+{
+    display : inline-block;
+    margin : space-between;
+    padding : 12px;
+}
+
+div
+{
+    background : darkorange;
+    padding : 1px;
+}
+
+.line
+{
+    background : white;
+    height : 1px;
 }
