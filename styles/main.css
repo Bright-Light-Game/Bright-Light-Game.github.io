@@ -1,5 +1,7 @@
-body
+/*Elements*/
+html, body
 {
+    height : 100%;
     background : black;
     color : white;
     font-family : arial;
@@ -7,14 +9,20 @@ body
     padding : 0;
 }
 
+body
+{
+    animation : fadeIn 1s;
+}
+
 header
 {
-    padding : 6px 0px;
+    padding : 2px 0px;
 }
 
 section
 {
-    height : 450px;
+    height : calc(100% - 185px);
+    display : inline-block;
 }
 
 footer
@@ -22,36 +30,71 @@ footer
     background : white;
     color : black;
     padding : 2px;
+    animation : loadFooter 1s;
+}
+
+a
+{
+    text-decoration : none;
+    color : inherit;
 }
 
 p
 {
-    padding : 2px;
+    padding-left : 8px;
 }
 
-ul
+
+/*Classes*/
+.navList
 {
-    margin : 8px;
     list-style-type : none;
     display : flex;
     flex-direction : row;
+    justify-content : center;
+    margin : 8px;
+    padding : 0;
 }
 
-li
+.navList li
 {
-    display : inline-block;
     margin : space-between;
-    padding : 12px;
+    padding : 8px;
+    font-size : 20px;
 }
 
-div
+.infoTag1
 {
     background : darkorange;
-    padding : 1px;
+    padding : 8px;
 }
 
 .line
 {
     background : white;
     height : 1px;
+}
+
+.footerText1
+{
+    padding-top : 4px;
+    padding-bottom : 12px;
+    background : none;
+}
+
+.cursorObject
+{
+    animation : cursorObject linear 1s infinite;
+}
+
+.errText
+{
+    color : red;
+}
+
+
+/*Events*/
+a:hover
+{
+    font-weight : bolder;
 }
