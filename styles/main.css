@@ -11,6 +11,8 @@ html, body
 
 body
 {
+    display : table;
+    width : 100%;
     animation : fadeIn 1s;
 }
 
@@ -21,12 +23,13 @@ header
 
 section
 {
-    height : calc(100% - 185px);
-    display : inline-block;
+    height : auto;
 }
 
 footer
 {
+    height : 1px;
+    display : table-row;
     background : white;
     color : black;
     padding : 2px;
