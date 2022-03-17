@@ -2,13 +2,13 @@
 @font-face
 {
     font-family : "lightweight";
-    src : url(../fonts/lightweight.ttf);
+    src : url(/fonts/lightweight.ttf);
 }
 
 @font-face
 {
     font-family : "small-spaces";
-    src : url(../font/small-spaces.ttf);
+    src : url(/fonts/small-spaces.ttf);
 }
 
 
