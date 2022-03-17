@@ -1,0 +1,58 @@
+/*Fonts*/
+@font-face
+{
+    font-family : "lightweight";
+    src : url(fonts/lightweight.ttf);
+}
+
+@font-face
+{
+    font-family : "small-spaces";
+    src : url(font/small-spaces.ttf);
+}
+
+
+/*Keyframes*/
+@keyframes loadFooter
+{
+    from
+    {
+        transform : translate(0px, 100px);
+    }
+    
+    to
+    {
+        transform : none;
+    }
+}
+
+@keyframes fadeIn
+{
+    from
+    {
+        opacity : 0.0;
+    }
+    
+    to
+    {
+        opacity : 1.0;
+    }
+}
+
+@keyframes cursorObject
+{
+    0%
+    {
+        transform : none;
+    }
+    
+    50%
+    {
+        transform : translate(25px, 0px);
+    }
+    
+    100%
+    {
+        transform : none;
+    }
+}
