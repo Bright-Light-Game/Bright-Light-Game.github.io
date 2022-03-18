@@ -1,4 +1,4 @@
-/*Fonts*/
+/*----------Fonts*/
 @font-face
 {
     font-family : "lightweight";
@@ -12,20 +12,7 @@
 }
 
 
-/*Keyframes*/
-@keyframes loadFooter
-{
-    from
-    {
-        transform : translate(0px, 100px);
-    }
-    
-    to
-    {
-        transform : none;
-    }
-}
-
+/*----------Keyframes*/
 @keyframes fadeIn
 {
     from
@@ -39,6 +26,21 @@
     }
 }
 
+/*-----Footer*/
+@keyframes loadFooter
+{
+    from
+    {
+        transform : translate(0px, 100px);
+    }
+    
+    to
+    {
+        transform : none;
+    }
+}
+
+/*-----Objects*/
 @keyframes cursorObject
 {
     0%

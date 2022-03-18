@@ -1,4 +1,4 @@
-/*Elements*/
+/*----------Elements*/
 html, body
 {
     height : 100%;
@@ -9,6 +9,7 @@ html, body
     padding : 0;
 }
 
+/*-----Sections*/
 body
 {
     display : table;
@@ -37,19 +38,29 @@ footer
     font-family : small-spaces;
 }
 
+/*-----Components*/
+p
+{
+    padding-left : 8px;
+}
+
 a
 {
     text-decoration : none;
     color : inherit;
 }
 
-p
+img
 {
-    padding-left : 8px;
+    image-rendering : -webkit-optimize-contrast;
+    image-rendering : crisp-edges;
+    image-rendering : pixelated;
+    -ms-interpolation-mode : nearest-neighbor;
 }
 
 
-/*Classes*/
+/*----------Classes*/
+/*-----Header*/
 .navList
 {
     list-style-type : none;
@@ -67,18 +78,13 @@ p
     font-size : 20px;
 }
 
-.infoTag1
-{
-    background : darkorange;
-    padding : 8px;
-}
-
 .line
 {
     background : white;
     height : 1px;
 }
 
+/*-----Footer*/
 .footerText1
 {
     padding-top : 4px;
@@ -86,18 +92,28 @@ p
     background : none;
 }
 
-.cursorObject
+/*-----Info Tags*/
+.infoTag1
 {
-    animation : cursorObject linear 1s infinite;
+    background : darkorange;
+    padding : 8px;
 }
 
 .errText
 {
     color : red;
+    text-transform : uppercase;
+}
+
+/*-----Objects*/
+.cursorObject
+{
+    animation : cursorObject linear 1s infinite;
 }
 
 
-/*Events*/
+
+/*----------Events*/
 a:hover
 {
     font-weight : bolder;
