@@ -169,12 +169,12 @@ img
 }
 
 /*----------Events*/
-a:hover
+a:focus
 {
     font-weight : bolder;
 }
 
-.buttonObject img:hover
+.buttonObject img:focus
 {
     transform : translate(calc(-30 * var(--pixel-unit)));
 }
