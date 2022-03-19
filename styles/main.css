@@ -175,13 +175,13 @@ a:hover
     font-weight : bolder;
 }
 
+.buttonObject img:active
+{
+    left : calc(-60 * var(--pixel-unit));
+}
+
 .buttonObject img:focus,
 .buttonObject img:hover
 {
     left : calc(-30 * var(--pixel-unit));
-}
-
-.buttonObject img:active
-{
-    left : calc(-60 * var(--pixel-unit));
 }
