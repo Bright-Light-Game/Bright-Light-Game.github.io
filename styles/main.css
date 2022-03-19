@@ -169,7 +169,8 @@ img
 }
 
 /*----------Events*/
-a:focus, a:hover
+a:focus,
+a:hover
 {
     font-weight : bolder;
 }
