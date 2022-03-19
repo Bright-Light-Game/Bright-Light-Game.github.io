@@ -176,8 +176,12 @@ a:hover
 }
 
 .buttonObject img:focus,
-.buttonObject img:hover,
+.buttonObject img:hover
+{
+    left : calc(-30 * var(--pixel-unit));
+}
+
 .buttonObject img:active
 {
-    transform : translate(calc(-30 * var(--pixel-unit)));
+    left : calc(-60 * var(--pixel-unit));
 }
