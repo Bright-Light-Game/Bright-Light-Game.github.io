@@ -1,3 +1,10 @@
+/*----------Variables*/
+:root
+{
+    --pixel-unit : 1.5px;
+}
+
+
 /*----------Elements*/
 html, body
 {
@@ -85,11 +92,18 @@ img
 }
 
 /*-----Footer*/
+.footerElements
+{
+    display : flex;
+    flex-direction : row;
+    flex-wrap : wrap;
+}
+
 .footerText1
 {
     padding-top : 4px;
-    padding-bottom : 12px;
-    background : none;
+    margin-bottom: 2px;
+    margin-right : auto;
 }
 
 /*-----Info Tags*/
@@ -111,10 +125,56 @@ img
     animation : cursorObject linear 1s infinite;
 }
 
+.buttonList
+{
+    padding : 4px;
+    padding-bottom : 12px;
+    display : flex;
+    flex-direction : row;
+    flex-wrap : wrap;
+}
 
+.buttonObject
+{
+    width : calc(30 * var(--pixel-unit));
+    height : calc(30 * var(--pixel-unit));
+    overflow : hidden;
+    margin : calc(2 * var(--pixel-unit));
+}
+
+.buttonObject img
+{
+    position : relative;
+    width : calc(60 * var(--pixel-unit));
+}
+
+.btn_twt
+{
+    top : calc(-30 * var(--pixel-unit));
+}
+
+.btn_yt
+{
+    top : calc(-60 * var(--pixel-unit));
+}
+
+.btn_fb
+{
+    top : calc(-90 * var(--pixel-unit));
+}
+
+.btn_insta
+{
+    top : calc(-120 * var(--pixel-unit));
+}
 
 /*----------Events*/
 a:hover
 {
     font-weight : bolder;
+}
+
+.buttonObject img:hover
+{
+    transform : translate(calc(-30 * var(--pixel-unit)));
 }
