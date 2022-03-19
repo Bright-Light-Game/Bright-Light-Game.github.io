@@ -145,7 +145,7 @@ img
 .buttonObject img
 {
     position : relative;
-    width : calc(60 * var(--pixel-unit));
+    width : calc(90 * var(--pixel-unit));
 }
 
 .btn_twt
