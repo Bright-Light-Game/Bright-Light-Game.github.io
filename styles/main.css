@@ -174,8 +174,8 @@ img
 }
 
 /*----------Events*/
-.navlist li a:focus,
-.navlist li a:hover
+.navlist a:focus,
+.navlist a:hover
 {
     font-weight : bold;
     opacity : 50;
