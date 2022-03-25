@@ -174,10 +174,9 @@ img
 }
 
 /*----------Events*/
-.navlist a:focus,
-.navlist a:hover
+.navList a:focus,
+.navList a:hover
 {
-    font-weight : bold;
     opacity : 0.5;
 }
 
