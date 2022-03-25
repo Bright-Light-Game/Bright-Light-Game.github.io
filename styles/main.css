@@ -174,11 +174,11 @@ img
 }
 
 /*----------Events*/
-.navlist li:focus,
-.navlist li:hover
+.navlist a:focus,
+.navlist a:hover
 {
     font-weight : bold;
-    opacity : 50;
+    opacity : 0.5;
 }
 
 .buttonObject img:focus,
