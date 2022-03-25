@@ -85,6 +85,13 @@ img
     font-size : 20px;
 }
 
+.currentPage
+{
+    position : relative;
+    top : 25px;
+    
+}
+
 .line
 {
     background : white;
@@ -169,10 +176,11 @@ img
 }
 
 /*----------Events*/
-a:focus,
-a:hover
+.navlist li a:focus,
+.navlist li a:hover
 {
     font-weight : bolder;
+    opacity : 50;
 }
 
 .buttonObject img:focus,
