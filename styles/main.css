@@ -87,9 +87,7 @@ img
 
 .currentPage
 {
-    position : relative;
-    top : 25px;
-    
+    font-weight : bolder;
 }
 
 .line
@@ -179,7 +177,7 @@ img
 .navlist li a:focus,
 .navlist li a:hover
 {
-    font-weight : bolder;
+    font-weight : bold;
     opacity : 50;
 }
 
