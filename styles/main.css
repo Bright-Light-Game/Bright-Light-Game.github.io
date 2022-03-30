@@ -25,7 +25,6 @@ body *:not(.selectable),
     -webkit-user-select : none;
     -ms-user-select : none;
     user-select : none;
-    pointer-events : none;
 }
 
 
@@ -74,7 +73,8 @@ a
     color : inherit;
 }
 
-img:not(.anti-aliased)
+img:not(.anti-aliased),
+.unselectable
 {
     image-rendering : -webkit-optimize-contrast;
     image-rendering : crisp-edges;
@@ -142,6 +142,11 @@ img:not(.anti-aliased)
 }
 
 /*-----Objects*/
+.unselectable
+{
+    pointer-events : none;
+}
+
 .cursorObject
 {
     animation : cursorObject linear 1s infinite;
@@ -193,6 +198,8 @@ img:not(.anti-aliased)
 {
     top : calc(-120 * var(--pixel-unit));
 }
+
+
 
 /*----------Events*/
 .navList a:focus,
