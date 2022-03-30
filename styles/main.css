@@ -33,6 +33,7 @@ section
 {
     position : absolute;
     max-width : 100%;
+    width : auto;
     height : auto;
     overflow : hidden;
     overflow-wrap : auto;
