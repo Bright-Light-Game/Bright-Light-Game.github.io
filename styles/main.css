@@ -86,6 +86,7 @@ img:not(.anti-aliased)
     justify-content : center;
     margin : 8px;
     padding : 0;
+    user-select : auto;
 }
 
 .navList li
