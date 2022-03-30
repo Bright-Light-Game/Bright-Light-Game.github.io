@@ -8,11 +8,8 @@
 /*----------Elements*/
 html, body
 {
-    min-height : 100%;
-    height : auto;
-    min-width : 100%;
-    max-width : 100%;
-    width : auto;
+    height : 100%;
+    width : 100%;
     background : black;
     color : white;
     font-family : lightweight;
@@ -24,7 +21,6 @@ html, body
 body
 {
     display : table;
-    width : 100%;
     animation : fadeIn 1s;
 }
 
@@ -35,7 +31,9 @@ header
 
 section
 {
+    max-width : 100%;
     height : auto;
+    overflow-wrap : auto;
 }
 
 footer
