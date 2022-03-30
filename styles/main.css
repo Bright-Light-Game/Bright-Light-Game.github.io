@@ -163,7 +163,7 @@ img:not(.anti-aliased)
     margin : calc(2 * var(--pixel-unit));
 }
 
-.buttonObject img
+.buttonObject a
 {
     position : relative;
     width : calc(90 * var(--pixel-unit));
