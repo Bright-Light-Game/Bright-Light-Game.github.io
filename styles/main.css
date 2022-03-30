@@ -166,6 +166,10 @@ img:not(.anti-aliased)
 .buttonObject a
 {
     position : relative;
+}
+
+.buttonObject img
+{
     width : calc(90 * var(--pixel-unit));
 }
 
