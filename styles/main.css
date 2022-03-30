@@ -18,7 +18,7 @@ html, body
 }
 
 body *:not(.selectable),
-.unselectabe
+.unselectable
 {
     -moz-user-select : none;
     -khtml-user-select : none;
@@ -196,13 +196,13 @@ img:not(.anti-aliased)
     opacity : 0.5;
 }
 
-.buttonObject img:focus,
-.buttonObject img:hover
+.buttonObject a:focus,
+.buttonObject a:hover
 {
     left : calc(-30 * var(--pixel-unit));
 }
 
-.buttonObject img:active
+.buttonObject a:active
 {
     left : calc(-60 * var(--pixel-unit));
 }
