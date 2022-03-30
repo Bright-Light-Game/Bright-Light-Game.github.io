@@ -6,11 +6,6 @@
 
 
 /*----------Elements*/
-body *:not(.pointerEventTrue)
-{
-    pointer-events : none;
-}
-
 html, body
 {
     height : 100%;
@@ -21,6 +16,17 @@ html, body
     margin : 0;
     padding : 0;
 }
+
+body *:not(.selectable),
+.unselectabe
+{
+    -moz-user-select : none;
+    -khtml-user-select : none;
+    -webkit-user-select : none;
+    -ms-user-select : none;
+    user-select : none;
+}
+
 
 /*-----Sections*/
 body
@@ -86,7 +92,6 @@ img:not(.anti-aliased)
     justify-content : center;
     margin : 8px;
     padding : 0;
-    user-select : auto;
 }
 
 .navList li
