@@ -6,7 +6,7 @@
 
 
 /*----------Elements*/
-body > *:not(.pointerEventTrue)
+body *:not(.pointerEventTrue)
 {
     pointer-events : none;
 }
