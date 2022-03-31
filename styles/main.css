@@ -167,6 +167,8 @@ img:not(.anti-aliased),
     height : calc(30 * var(--pixel-unit));
     overflow : hidden;
     margin : calc(2 * var(--pixel-unit));
+    display : flex;
+    align-content : flex-start;
 }
 
 .buttonObject a
@@ -176,25 +178,26 @@ img:not(.anti-aliased),
 
 .buttonObject img
 {
+    position : relative;
     width : calc(90 * var(--pixel-unit));
 }
 
-.btn_twt
+.btn_twt img
 {
     top : calc(-30 * var(--pixel-unit));
 }
 
-.btn_yt
+.btn_yt img
 {
     top : calc(-60 * var(--pixel-unit));
 }
 
-.btn_fb
+.btn_fb img
 {
     top : calc(-90 * var(--pixel-unit));
 }
 
-.btn_insta
+.btn_insta img
 {
     top : calc(-120 * var(--pixel-unit));
 }
