@@ -110,6 +110,7 @@ img:not(.anti-aliased),
 .line
 {
     background : white;
+    border : none;
     height : 1px;
 }
 
@@ -201,7 +202,6 @@ img:not(.anti-aliased),
 {
     top : calc(-120 * var(--pixel-unit));
 }
-
 
 
 /*----------Events*/
