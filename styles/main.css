@@ -32,7 +32,6 @@ body *:not(.selectable),
 body
 {
     display : table;
-    animation : fadeIn 1s;
 }
 
 header
@@ -50,6 +49,7 @@ section
     overflow-wrap : break-word;
 }
 
+/*-----Footer*/
 footer
 {
     height : 1px;
@@ -57,8 +57,18 @@ footer
     background : white;
     color : black;
     padding : 2px;
-    animation : loadFooter 1s;
     font-family : small-spaces;
+}
+
+footer[data-fadeState="1"]
+{
+    animation : 1s slideFooter;
+}
+
+footer[data-fadeState="2"]
+{
+    transform : translateY(100%);
+    animation : reverse 0.5s slideFooter ease;
 }
 
 /*-----Components*/
@@ -73,8 +83,7 @@ a
     color : inherit;
 }
 
-img:not(.anti-aliased),
-.unselectable
+img:not(.anti-aliased)
 {
     image-rendering : -webkit-optimize-contrast;
     image-rendering : crisp-edges;
@@ -129,30 +138,6 @@ img:not(.anti-aliased),
     margin-right : auto;
 }
 
-/*-----Info Tags*/
-.infoTag1
-{
-    background : darkorange;
-    padding : 8px;
-}
-
-.errText
-{
-    color : red;
-    text-transform : uppercase;
-}
-
-/*-----Objects*/
-.unselectable
-{
-    pointer-events : none;
-}
-
-.cursorObject
-{
-    animation : cursorObject linear 1s infinite;
-}
-
 .buttonList
 {
     padding : 4px;
@@ -201,6 +186,61 @@ img:not(.anti-aliased),
 .btn_insta img
 {
     top : calc(-120 * var(--pixel-unit));
+}
+
+/*-----Info Tags*/
+.infoTag1
+{
+    background : darkorange;
+    padding : 8px;
+}
+
+.errText
+{
+    color : red;
+    text-transform : uppercase;
+}
+
+/*-----Screen Fade*/
+.fadeObject
+{
+    background : black;
+    border : none;
+    opacity : 0.0;
+    position : fixed;
+    margin : 0;
+    padding : 0;
+    top : 0;
+    bottom : 0;
+    left : 0;
+    right : 0;
+    z-index : 420;
+    pointer-events : none;
+}
+
+.fadeObject[data-fadeState="1"]
+{
+    pointer-events : all;
+    animation : 1s fade;
+}
+
+.fadeObject[data-fadeState="2"]
+{
+    opacity : 1.0;
+    pointer-events : all;
+    animation : reverse 0.5s fade ease;
+}
+
+
+/*-----Objects*/
+.unselectable
+{
+    pointer-events : none;
+}
+
+.cursorObject
+{
+    animation : cursorObject linear 1s infinite;
 }
 
 
