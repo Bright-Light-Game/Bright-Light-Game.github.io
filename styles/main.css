@@ -37,7 +37,7 @@ body *:not(.selectable),
     user-select : none;
 }
 
-body:-webkit-scrollbar
+body::-webkit-scrollbar
 {
     display: none;
 }
