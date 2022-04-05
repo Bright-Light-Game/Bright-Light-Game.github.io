@@ -6,10 +6,23 @@
 
 
 /*----------Elements*/
+html
+{
+    width : 100%;
+    color : white;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
+}
+
+html:-webkit-scrollbar
+{
+    display: none;
+}
+
 html, body
 {
     height : 100%;
-    width : 100%;
     background : black;
     color : white;
     font-family : lightweight;
