@@ -6,28 +6,25 @@
 
 
 /*----------Elements*/
-html
-{
-    width : 100%;
-    color : white;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    overflow-y: scroll;
-}
-
-html:-webkit-scrollbar
-{
-    display: none;
-}
-
 html, body
 {
     height : 100%;
+    width : 100%;
     background : black;
     color : white;
     font-family : lightweight;
     margin : 0;
     padding : 0;
+}
+
+
+/*-----Sections*/
+body
+{
+    display : table;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
 }
 
 body *:not(.selectable),
@@ -40,11 +37,9 @@ body *:not(.selectable),
     user-select : none;
 }
 
-
-/*-----Sections*/
-body
+body:-webkit-scrollbar
 {
-    display : table;
+    display: none;
 }
 
 header
@@ -243,7 +238,6 @@ img:not(.anti-aliased)
     pointer-events : all;
     animation : reverse 0.5s fade ease;
 }
-
 
 /*-----Objects*/
 .unselectable
