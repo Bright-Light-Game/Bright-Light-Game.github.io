@@ -137,6 +137,8 @@ ScrollBar.setBars = function (state)
     
     _barArrowUp.classList.add("scrollBarUp");
     _barArrowDown.classList.add("scrollBarDown");
+    _barArrowUp.style.visibility = "hidden";
+    _barArrowDown.style.visibility = "hidden";
     
     let imgSrc = "/img/spr_ui12-12.png"; 
     
