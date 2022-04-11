@@ -9,7 +9,6 @@
 html, body
 {
     height : 100%;
-    width : 100%;
     background : black;
     color : white;
     font-family : lightweight;
@@ -21,10 +20,8 @@ html, body
 /*-----Sections*/
 body
 {
-    display : table;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    overflow-y: scroll;
+    display : flex;
+    flex-direction : column;
 }
 
 body *:not(.selectable),
@@ -37,31 +34,29 @@ body *:not(.selectable),
     user-select : none;
 }
 
-body::-webkit-scrollbar
-{
-    display: none;
-}
-
 header
 {
     padding : 2px 0px;
 }
 
-section
+main
 {
-    position : absolute;
-    max-width : 100%;
-    width : auto;
-    height : auto;
-    overflow : hidden;
+    flex : 1;
+    overflow-x : hidden;
+    display : flex;
+}
+
+#mainContent
+{
+    overflow-x : hidden;
     overflow-wrap : break-word;
+    width : 100%;
+    padding : 8px;
 }
 
 /*-----Footer*/
 footer
 {
-    height : 1px;
-    display : table-row;
     background : white;
     color : black;
     padding : 2px;
@@ -80,15 +75,15 @@ footer[data-fadeState="2"]
 }
 
 /*-----Components*/
-p
-{
-    padding-left : 8px;
-}
-
 a
 {
     text-decoration : none;
     color : inherit;
+}
+
+p
+{
+    padding : 8px;
 }
 
 img:not(.anti-aliased)
@@ -250,7 +245,47 @@ img:not(.anti-aliased)
     animation : cursorObject linear 1s infinite;
 }
 
+/*Scrollbar*/
+.scrollBar
+{
+    padding : calc(8 * var(--pixel-unit));
+    display : flex;
+    flex-direction : column;
+    flex-wrap : wrap;
+    width : calc(22 * var(--pixel-unit));
+    justify-content : center;
+    align-content : center;
+}
 
+.scrollBar div
+{
+    position : relative;
+    width : calc(12 * var(--pixel-unit));
+    height : calc(12 * var(--pixel-unit));
+    overflow : hidden;
+}
+
+.scrollBarUp
+{
+    margin-top : calc(8 * var(--pixel-unit));
+    margin-bottom : auto;
+    animation : scrollBarUp linear 1s infinite;
+}
+
+.scrollBarDown
+{
+    margin-top : auto;
+    margin-bottom : calc(8 * var(--pixel-unit));
+    animation : scrollBarDown linear 1s infinite;
+}
+
+.scrollBar img
+{
+    position : relative;
+    top : calc(-12 * var(--pixel-unit));
+    left : calc(-12 *var(--pixel-unit));
+    width : calc(24 * var(--pixel-unit));
+}
 /*----------Events*/
 .navList a:focus,
 .navList a:hover
@@ -267,4 +302,37 @@ img:not(.anti-aliased)
 .buttonObject a:active
 {
     left : calc(-60 * var(--pixel-unit));
+}
+
+
+/*----------Attributes*/
+/*-----Scroll Bar*/
+[data-scrollBar="hidden"]
+{
+    -ms-overflow-style : none;
+    scrollbar-width : none;
+    overflow-y : scroll;
+    overflow-x : hidden;
+    overflow-wrap : break-word;
+}
+
+
+[data-scrollBar="hidden"]::-webkit-scrollbar
+{
+    display: none;
+}
+
+[data-scrollBar="show"]
+{
+    -ms-overflow-style : initial;
+    scrollbar-width : initial;
+    overflow-y : initial;
+    overflow-x : initial;
+    overflow-wrap : initial;
+}
+
+
+[data-scrollBar="show"]::-webkit-scrollbar
+{
+    display: initial;
 }

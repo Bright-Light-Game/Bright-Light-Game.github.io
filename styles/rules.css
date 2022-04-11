@@ -58,3 +58,40 @@
         transform : none;
     }
 }
+
+/*Scrollbar*/
+@keyframes scrollBarUp
+{
+    0%
+    {
+        transform : rotate(180deg);
+    }
+    
+    50%
+    {
+        transform : translate(0px, -50%) rotate(180deg);
+    }
+    
+    100%
+    {
+        transform : rotate(180deg);
+    }
+}
+
+@keyframes scrollBarDown
+{
+    0%
+    {
+        transform : none;
+    }
+    
+    50%
+    {
+        transform : translate(0px, 50%);
+    }
+    
+    100%
+    {
+        transform : none;
+    }
+}
