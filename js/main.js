@@ -46,7 +46,7 @@ function screenTrans ()
             footer.setAttribute("data-fadeState", "2");
             fadeEl.setAttribute("data-fadeState", "2");
             
-            setInterval(() => {
+            setTimeout(() => {
                 window.location.href = target;
             }, (fadeTime * 500));
         });
@@ -84,7 +84,7 @@ var wheelEvent = "onwheel" in document.createElement("div") ? "wheel" : "mousewh
 // Toggle
 function setScrolling (toggle)
 {
-    if (toggle == true)
+    if (toggle)
     {
         window.removeEventListener("DOMMouseScroll", preventDefault, false);
         window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
@@ -109,7 +109,7 @@ function ScrollBar ()
 
 ScrollBar.setBars = function (state)
 {
-    if (state != true)
+    if (!state)
     {
         if (this.scrollInterval == null)
         {
@@ -164,7 +164,7 @@ ScrollBar.detectScreen = function ()
     
     let content = document.querySelector("#mainContent");
     
-    this.scrollInterval = setInterval(function () {
+    this.scrollInterval = setInterval(() => {
         scrollPos = content.scrollTop / (content.scrollHeight - content.clientHeight);
         
         if (!isNaN(scrollPos))
