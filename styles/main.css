@@ -81,11 +81,6 @@ a
     color : inherit;
 }
 
-p
-{
-    padding : 8px;
-}
-
 img:not(.anti-aliased)
 {
     image-rendering : -webkit-optimize-contrast;
@@ -136,6 +131,7 @@ img:not(.anti-aliased)
 
 .footerText1
 {
+    padding : 8px;
     padding-top : 4px;
     margin-bottom: 2px;
     margin-right : auto;
