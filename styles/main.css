@@ -16,7 +16,6 @@ html, body
     padding : 0;
 }
 
-
 /*-----Sections*/
 body
 {
@@ -108,7 +107,7 @@ noscript div
     position : relative;
     text-align : center;
     margin : auto;
-    animation : linear fade 1s infinite;
+    animation : linear fadeIO 1s infinite;
 }
 
 
@@ -214,12 +213,6 @@ noscript div
 {
     background : darkorange;
     padding : 8px;
-}
-
-.errText
-{
-    color : red;
-    text-transform : uppercase;
 }
 
 /*-----Screen Fade*/
