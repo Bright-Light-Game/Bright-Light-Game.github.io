@@ -210,6 +210,9 @@ function ThrowError (errorCode)
         case 2:
             errorText = "There is no instance to work with";
             break;
+        case 3:
+            errorText = "File or source is invalid";
+            break;
     }
     
     errorText += `\nError Code: ${errorCode}`;
