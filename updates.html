@@ -214,7 +214,7 @@ Updates.load = function ()
 {
     let request = new XMLHttpRequest();
     
-    request.open("GET", `/data/${src}.json`);
+    request.open("GET", `/data/updates.json`);
     request.overrideMimeType("application/json");
     
     request.onload = function ()
