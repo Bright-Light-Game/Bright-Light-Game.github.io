@@ -154,8 +154,6 @@
         
         <script src="https://bright-light-game.github.io/js/main.js" type="text/javascript"></script>
         <script>
-let BODY = document.body;
-
 function Updates ()
 {
     ThrowError(1);
@@ -170,7 +168,7 @@ Updates.load = function ()
         if (request.status < 400)
         {
             Updates.updatesData = this.responseText;
-            alert(Updates.updatesData);//Updates.setArticles();
+            Updates.setArticles();
         }
     };
     
@@ -186,7 +184,32 @@ Updates.load = function ()
 
 Updates.setArticles = function ()
 {
-    BODY.innerHTML = this.updatesData;
+    this.mainContent = document.querySelector("#mainContent");
+    
+    for (let i = 0; i < this.updatesData; i++)
+    {
+        let newArticle = document.createElement("article");
+        let newAHeader = document.createElement("div");
+        let newATitle = document.createElement("div");
+        let newADate = document.createElement("div");
+        let newAContent = document.createElement("div");
+        
+        newArticle.classList.add("updateArticle");
+        newAHeader.classList.add("updateHeader");
+        newATitle.classList.add("updateTitle");
+        newADate.classList.add("updateDate");
+        newAContent.classList.add("updateContent");
+        
+        newATitle.innerHTML = this.updatesData[i].title;
+        newADate.innerHTML = this.updatesData[i].date;
+        newAContent.innerHTML = this.updatesData[i].content;
+        
+        newAHeader.appendChild(newATitle);
+        newAHeader.appendChild(newADate);
+        newArticle.appendChild(newAHeader);
+        newArticle.appendChild(newAContent);
+        this.mainContent.appendChild(newArticle);
+    }
 };
         </script>
     </body>
