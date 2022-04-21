@@ -11,7 +11,7 @@ Updates.load = function ()
     {
         if (request.status < 400)
         {
-            Updates.updatesData =JSON.parse(this.responseText);
+            Updates.updatesData = JSON.parse(this.responseText);
             Updates.setArticles();
         }
     };
@@ -30,7 +30,7 @@ Updates.setArticles = function ()
 {
     this.mainContent = document.querySelector("#mainContent");
     
-    for (let i = 0; i < this.updatesData; i++)
+    for (let i = 0; i < this.updatesData.length; i++)
     {
         let newArticle = document.createElement("article");
         let newAHeader = document.createElement("div");
