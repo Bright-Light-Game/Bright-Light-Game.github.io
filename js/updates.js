@@ -11,7 +11,7 @@ Updates.load = function ()
     {
         if (request.status < 400)
         {
-            Updates.updatesData = this.responseText;
+            Updates.updatesData =JSON.parse(this.responseText);
             Updates.setArticles();
         }
     };
