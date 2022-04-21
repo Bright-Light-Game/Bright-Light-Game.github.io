@@ -212,10 +212,7 @@ function Updates ()
 
 Updates.load = function ()
 {
-    /*var request = new XMLHttpRequest();
-    
-    request.open("GET", `/data/updates.json`);
-    request.overrideMimeType("application/json");
+    let request = new XMLHttpRequest();
     
     request.onload = function ()
     {
@@ -226,7 +223,9 @@ Updates.load = function ()
         }
     };
     
-    request.send();*/
+    request.open("GET", "/data/updates.json");
+    request.overrideMimeType("application/json");
+    request.send();
 };
 
 Updates.setArticles = function ()
