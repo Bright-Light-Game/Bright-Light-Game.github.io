@@ -11,9 +11,21 @@ var scrollKeys = {
 };
 
 window.onload = () => {
+    loadScene();
     screenTrans();
     setScrolling(false);
 };
+
+function loadScene ()
+{
+    let currentPageE = document.querySelector(".currentPage");
+    var currentPage = currentPageE.innerHTML;
+    
+    if (currentPage == "Updates")
+    {
+        Updates.load();
+    }
+}
 
 
 // ----------Screen Transition
