@@ -218,9 +218,14 @@ Updates.load = function ()
     {
         if (request.status < 400)
         {
-            alert("e");
             Updates.updatesData = this.responseText;
+            setArticles();
         }
+    };
+    
+    request.onerror = function ()
+    {
+        ThrowError(3);
     };
     
     request.open("GET", "/data/updates.json");
