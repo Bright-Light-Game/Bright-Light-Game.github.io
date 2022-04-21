@@ -40,8 +40,8 @@
         
         
         <!------------Styles-->
-        <link href="/styles/main.css" rel="stylesheet" type="text/css"/>
-        <link href="/styles/rules.css" rel="stylesheet" type="text/css"/>
+        <link href="https://bright-light-game.github.io/styles/main.css" rel="stylesheet" type="text/css"/>
+        <link href="https://bright-light-game.github.io/styles/rules.css" rel="stylesheet" type="text/css"/>
     </head>
     
     <body data-scrollBar="hidden">
@@ -67,7 +67,48 @@
         
         <main>
             <section id="mainContent" data-scrollBar="hidden">
-                
+                <article class="updateArticle">
+                    <div class="updateHeader">
+                        <div class="updateTitle">
+                            Title
+                        </div>
+                        
+                        <div class="updateDate">
+                            Date
+                        </div>
+                    </div>
+                    
+                    <div class="updateContent">
+                        Content
+                        <br>
+                        Content but looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong
+                        <br>
+                        Content before media but looooooooooooooooooooooooooooooooooooooooooooooooong
+                        <img src='https://bright-light-game.github.io/img/seo/seoImage.png' alt='test image'>
+                        Content after media but looooooooooooooooooooooooooooooooooooooooong
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        Hi
+                    </div>
+                </article>
+                    
+                <article class="updateArticle">
+                    <div class="updateHeader">
+                        <div class="updateTitle">
+                            Another one
+                        </div>
+                        
+                        <div class="updateDate">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="updateContent">
+                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                        <br>
+                        <br>
+                        planning to implement .json file to an update article
+                    </div>
+                </article>
             </section>
             
             <div class="scrollBar"></div>
@@ -111,6 +152,42 @@
             </div>
         </footer>
         
-        <script src="/js/main.js" type="text/javascript"></script>
+        <script src="https://bright-light-game.github.io/js/main.js" type="text/javascript"></script>
+        <script>
+let BODY = document.body;
+
+function Updates ()
+{
+    ThrowError(1);
+}
+
+Updates.load = function ()
+{
+    let request = new XMLHttpRequest();
+    
+    request.onload = function ()
+    {
+        if (request.status < 400)
+        {
+            Updates.updatesData = this.responseText;
+            alert(Updates.updatesData);//Updates.setArticles();
+        }
+    };
+    
+    request.onerror = function ()
+    {
+        ThrowError(3);
+    };
+    
+    request.open("GET", "/data/updates.json");
+    request.overrideMimeType("application/json");
+    request.send();
+};
+
+Updates.setArticles = function ()
+{
+    BODY.innerHTML = this.updatesData;
+};
+        </script>
     </body>
 </html>
