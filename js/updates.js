@@ -38,20 +38,27 @@ Updates.setArticles = function ()
         let newADate = document.createElement("div");
         let newAContent = document.createElement("div");
         
+        newArticle.setAttribute("id", `uA${i}`);
+        
         newArticle.classList.add("updateArticle");
         newAHeader.classList.add("updateHeader");
         newATitle.classList.add("updateTitle");
         newADate.classList.add("updateDate");
         newAContent.classList.add("updateContent");
         
-        newATitle.innerHTML = this.updatesData[i].title;
-        newADate.innerHTML = this.updatesData[i].date;
-        newAContent.innerHTML = this.updatesData[i].content;
-        
         newAHeader.appendChild(newATitle);
         newAHeader.appendChild(newADate);
         newArticle.appendChild(newAHeader);
         newArticle.appendChild(newAContent);
         this.mainContent.appendChild(newArticle);
+        
+        let Article = document.querySelector(`#uA${i}`);
+        let ATitle = Article.querySelector("updateTitle");
+        let ADate = Article.querySelector("updateDate");
+        let AContent = Article.querySelector("updateContent");
+        
+        ATitle.innerHTML = this.updatesData[i].title;
+        ADate.innerHTML = this.updatesData[i].date;
+        AContent.innerHTML = this.updatesData[i].content;
     }
 };
