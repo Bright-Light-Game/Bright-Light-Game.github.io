@@ -211,17 +211,17 @@ window.onload = () => {
 
 function JSONFile(src)
 {
-    let request = new XMLHttpRequest();
+    var request = new XMLHttpRequest();
     var rText;
     
     request.open("GET", `/data/${src}.json`);
     request.overrideMimeType("application/json");
     
-    request.onload = function ()
+    request.onreadystatechange = function ()
     {
-        if (request.status < 400)
+        if (request.readyState == XMLHttpRequest.DONE)
         {
-            rText = this.responseText;
+            /*rText = */alert(this.responseText);
         }
         else
         {
@@ -235,7 +235,7 @@ function JSONFile(src)
         rText = null;
     };
     
-    xhr.send();
+    //xhr.send();
     return rText;
 }
         </script>
