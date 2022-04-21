@@ -131,7 +131,7 @@ noscript div
     font-size : 20px;
 }
 
-#currentPage
+.currentPage
 {
     font-weight : bolder;
 }
