@@ -205,39 +205,34 @@ body
         <script>
 let BODY = document.body;
 
-window.onload = () => {
-    BODY.innerHTML = JSONFile("updates");
+function Updates ()
+{
+    ThrowError(1);
 }
 
-function JSONFile(src)
+Updates.load = function ()
 {
-    var request = new XMLHttpRequest();
-    var rText;
+    let request = new XMLHttpRequest();
     
     request.open("GET", `/data/${src}.json`);
     request.overrideMimeType("application/json");
     
-    request.onreadystatechange = function ()
+    request.onload = function ()
     {
-        if (request.readyState == XMLHttpRequest.DONE)
+        if (request.status < 400)
         {
-            /*rText = */alert(this.responseText);
-        }
-        else
-        {
-            rText = null;
+            alert("e");
+            Updates.updatesData = this.responseText;
         }
     };
     
-    request.onerror = function ()
-    {
-        ThrowError(3);
-        rText = null;
-    };
-    
-    //xhr.send();
-    return rText;
-}
+    xhr.send();
+};
+
+Updates.setArticles = function ()
+{
+    BODY.innerHTML = this.updatesData;
+};
         </script>
     </body>
 </html>
