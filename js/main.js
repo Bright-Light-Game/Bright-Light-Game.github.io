@@ -147,8 +147,8 @@ ScrollBar.setBars = function (state)
     let barImg1 = document.createElement("img");
     let barImg2 = document.createElement("img");
     
-    _barArrowUp.classList.add("scrollBarUp");
-    _barArrowDown.classList.add("scrollBarDown");
+    _barArrowUp.classList.add("scrollBarUp", "unselectable");
+    _barArrowDown.classList.add("scrollBarDown", "unselectable");
     _barArrowUp.style.visibility = "hidden";
     _barArrowDown.style.visibility = "hidden";
     
