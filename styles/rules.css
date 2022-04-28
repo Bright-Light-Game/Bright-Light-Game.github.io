@@ -15,101 +15,53 @@
 /*----------Keyframes*/
 @keyframes fade
 {
-    from
-    {
-        opacity : 1.0;
-    }
+    from { opacity : 1.0; }
     
-    to
-    {
-        opacity : 0.0;
-    }
+    to { opacity : 0.0; }
 }
 
 @keyframes fadeIO
 {
-    0%
-    {
-        opacity : 1.0;
-    }
+    0% { opacity : 1.0; }
     
-    50%
-    {
-        opacity : 0.0;
-    }
+    50% { opacity : 0.0; }
     
-    100%
-    {
-        opacity : 1.0;
-    }
+    100% { opacity : 1.0; }
 }
 
 /*-----Footer*/
 @keyframes slideFooter
 {
-    from
-    {
-        transform : translateY(100%);
-    }
+    from { transform : translateY(100%); }
     
-    to
-    {
-        transform : none;
-    }
+    to { transform : none; }
 }
 
 /*-----Objects*/
 @keyframes cursorObject
 {
-    0%
-    {
-        transform : none;
-    }
+    0% { transform : none; }
     
-    50%
-    {
-        transform : translate(25px, 0px);
-    }
+    50% { transform : translate(25px, 0px); }
     
-    100%
-    {
-        transform : none;
-    }
+    100% { transform : none; }
 }
 
 /*Scrollbar*/
 @keyframes scrollBarUp
 {
-    0%
-    {
-        transform : rotate(180deg);
-    }
+    0% { transform : rotate(180deg); }
     
-    50%
-    {
-        transform : translate(0px, -50%) rotate(180deg);
-    }
+    50% { transform : translate(0px, -50%) rotate(180deg); }
     
-    100%
-    {
-        transform : rotate(180deg);
-    }
+    100% { transform : rotate(180deg); }
 }
 
 @keyframes scrollBarDown
 {
-    0%
-    {
-        transform : none;
-    }
+    0% { transform : none; }
     
-    50%
-    {
-        transform : translate(0px, 50%);
-    }
+    50% { transform : translate(0px, 50%); }
     
-    100%
-    {
-        transform : none;
-    }
+    100% { transform : none; }
 }
