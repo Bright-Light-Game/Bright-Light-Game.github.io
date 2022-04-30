@@ -50,6 +50,7 @@ main
 {
     overflow-x : hidden;
     overflow-wrap : break-word;
+    scroll-behavior : smooth;
     width : 100%;
     padding : 8px;
 }
