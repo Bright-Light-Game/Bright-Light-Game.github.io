@@ -16,14 +16,6 @@ html, body
     padding : 0;
 }
 
-/*-----Sections*/
-body
-{
-    display : flex;
-    flex-direction : column;
-    text-size-adjust : none;
-}
-
 *:not(.selectable),
 .unselectable
 {
@@ -32,6 +24,14 @@ body
     -webkit-user-select : none;
     -ms-user-select : none;
     user-select : none;
+}
+
+/*-----Sections*/
+body
+{
+    display : flex;
+    flex-direction : column;
+    text-size-adjust : none;
 }
 
 header
