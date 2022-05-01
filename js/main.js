@@ -74,7 +74,7 @@ function preventDefault(e)
 
 function preventDefaultForScrollKeys(e)
 {
-    if (keys[e.keyCode])
+    if (scrollKeys[e.keyCode])
     {
         preventDefault(e);
         return false;
