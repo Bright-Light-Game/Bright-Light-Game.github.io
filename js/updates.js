@@ -7,17 +7,15 @@ Updates.load = function ()
 {
     let request = new XMLHttpRequest();
     
-    request.onload = function ()
-    {
+    request.onload = () => {
         if (request.status < 400)
         {
-            Updates.updatesData = JSON.parse(this.responseText);
-            Updates.setArticles();
+            this.updatesData = JSON.parse(request.responseText);
+            this.setArticles();
         }
     };
     
-    request.onerror = function ()
-    {
+    request.onerror = () => {
         ThrowError(3);
     };
     
