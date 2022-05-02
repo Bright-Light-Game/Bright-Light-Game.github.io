@@ -60,19 +60,9 @@ footer
 {
     background : white;
     color : black;
+    transform : translateY(100%);
     padding : 2px;
     font-family : small-spaces;
-}
-
-footer[data-fadeState="1"]
-{
-    animation : 1s slideFooter;
-}
-
-footer[data-fadeState="2"]
-{
-    transform : translateY(100%);
-    animation : reverse 0.5s slideFooter ease;
 }
 
 /*-----Components*/
@@ -224,36 +214,6 @@ noscript div
     padding : 8px;
 }
 
-/*-----Screen Fade*/
-.fadeObject
-{
-    background : black;
-    border : none;
-    opacity : 0.0;
-    position : fixed;
-    margin : 0;
-    padding : 0;
-    top : 0;
-    bottom : 0;
-    left : 0;
-    right : 0;
-    z-index : 420;
-    pointer-events : none;
-}
-
-.fadeObject[data-fadeState="1"]
-{
-    pointer-events : all;
-    animation : 1s fade;
-}
-
-.fadeObject[data-fadeState="2"]
-{
-    opacity : 1.0;
-    pointer-events : all;
-    animation : reverse 0.5s fade ease;
-}
-
 /*-----Objects*/
 .unselectable
 {
@@ -263,6 +223,21 @@ noscript div
 .cursorObject
 {
     animation : cursorObject linear 1s infinite;
+}
+
+.fadeObject
+{
+    background : black;
+    border : none;
+    position : fixed;
+    margin : 0;
+    padding : 0;
+    top : 0;
+    bottom : 0;
+    left : 0;
+    right : 0;
+    z-index : 420;
+    pointer-events : all;
 }
 
 /*Scrollbar*/

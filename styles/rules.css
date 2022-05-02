@@ -13,13 +13,6 @@
 
 
 /*----------Keyframes*/
-@keyframes fade
-{
-    from { opacity : 1.0; }
-    
-    to { opacity : 0.0; }
-}
-
 @keyframes fadeIO
 {
     0% { opacity : 1.0; }
@@ -27,14 +20,6 @@
     50% { opacity : 0.0; }
     
     100% { opacity : 1.0; }
-}
-
-/*-----Footer*/
-@keyframes slideFooter
-{
-    from { transform : translateY(100%); }
-    
-    to { transform : none; }
 }
 
 /*-----Objects*/
