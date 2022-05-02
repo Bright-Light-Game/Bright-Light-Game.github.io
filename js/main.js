@@ -50,7 +50,7 @@ function screenTrans ()
             fadeEl.style.pointerEvents = "all";
             fadeEl.style.opacity = "1.0";
             fadeEl.style.transition = "opacity 0.5s"
-            footer.style.transform = "translateX(100%)";
+            footer.style.transform = "translateY(100%)";
             footer.style.transition = "transform 0.5s";
             
             setTimeout(() => {
