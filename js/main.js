@@ -124,43 +124,49 @@ ScrollBar.setBars = function (state)
     this.barArrowUp = document.querySelector(".scrollBarUp");
     this.barArrowDown = document.querySelector(".scrollBarDown");
     
+    this.content = document.querySelector("#mainContent");
+    
+    this.barArrrowUp.onmousedown = () => { this.Move(2); };
+    this.barArrrowDown.onmousedown = () => { this.Move(-2); };
+    
     this.detectScreen();
 };
 
 ScrollBar.detectScreen = function ()
 {
-    let barArrowUp = this.barArrowUp;
-    let barArrowDown = this.barArrowDown;
-    
-    let content = document.querySelector("#mainContent");
-    
     this.scrollInterval = setInterval(() => {
-        scrollPos = content.scrollTop / (content.scrollHeight - content.clientHeight);
+        let scrollPos = this.content.scrollTop / (this.content.scrollHeight - this.content.clientHeight);
         
         if (!isNaN(scrollPos))
         {
             if (scrollPos <= 0)
             {
-                barArrowUp.style.visibility = "hidden";
-                barArrowDown.style.visibility = "visible";
+                this.barArrowUp.style.visibility = "hidden";
+                this.barArrowDown.style.visibility = "visible";
             }
             else if (scrollPos >= 1)
             {
-                barArrowUp.style.visibility = "visible";
-                barArrowDown.style.visibility = "hidden";
+                this.barArrowUp.style.visibility = "visible";
+                this.barArrowDown.style.visibility = "hidden";
             }
             else
             {
-                barArrowUp.style.visibility = "visible";
-                barArrowDown.style.visibility = "visible";
+                this.barArrowUp.style.visibility = "visible";
+                this.barArrowDown.style.visibility = "visible";
             }
         }
         else
         {
-            barArrowUp.style.visibility = "hidden";
-            barArrowDown.style.visibility = "hidden";
+            this.barArrowUp.style.visibility = "hidden";
+            this.barArrowDown.style.visibility = "hidden";
         }
     }, 2);
+};
+
+ScrollBar.Move = function (amount)
+{
+    let towardsPos = this.content.scrollTop + amount;
+    this.content.scrollTop = towardsPos;
 };
 
 
