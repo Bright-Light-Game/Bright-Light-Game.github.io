@@ -126,8 +126,8 @@ ScrollBar.setBars = function (state)
     
     this.content = document.querySelector("#mainContent");
     
-    //this.barArrrowUp.onmousedown = () => { this.Move(2); };
-    //this.barArrrowDown.onmousedown = () => { this.Move(-2); };
+    this.barArrrowUp.onmousedown = () => { this.Move(-2); };
+    this.barArrrowDown.onmousedown = () => { this.Move(2); };
     
     this.detectScreen();
 };
