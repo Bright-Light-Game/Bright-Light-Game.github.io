@@ -126,8 +126,11 @@ ScrollBar.setBars = function (state)
     
     this.content = document.querySelector("#mainContent");
     
-    this.barArrrowUp.onmousedown = () => { this.Move(-2); };
-    this.barArrrowDown.onmousedown = () => { this.Move(2); };
+    this.barArrowUp.onmousedown = () => { this.MoveScroll(-5); };
+    this.barArrowDown.onmousedown = () => { this.MoveScroll(5); };
+    this.barArrowUp.onmouseup = () => { this.StopScroll(); };
+    this.barArrowDown.onmouseup = () => { this.StopScroll(); };
+    window.onmouseover = () => { this.StopScroll(); };
     
     this.detectScreen();
 };
@@ -163,10 +166,17 @@ ScrollBar.detectScreen = function ()
     }, 2);
 };
 
-ScrollBar.Move = function (amount)
+ScrollBar.MoveScroll = function (amount)
 {
-    let towardsPos = this.content.scrollTop + amount;
-    this.content.scrollTop = towardsPos;
+    this.moveInterval = setInterval(() => {
+        let towardsPos = this.content.scrollTop + amount;
+        this.content.scrollTop = towardsPos;
+    }, 16.67);
+};
+
+ScrollBar.StopScroll = function ()
+{
+    if (this.moveInterval != null) clearInterval(this.moveInterval);
 };
 
 
