@@ -96,7 +96,7 @@ ScrollBar.setBars = function (state)
             ThrowError(0);
         }
         
-        return null;
+        return;
     }
     
     this.scrollBar = document.querySelector(".scrollBar");
