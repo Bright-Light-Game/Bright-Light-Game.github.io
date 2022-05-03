@@ -105,8 +105,10 @@ ScrollBar.setBars = function (state)
     let barImg1 = document.createElement("img");
     let barImg2 = document.createElement("img");
     
-    _barArrowUp.classList.add("scrollBarUp", "unselectable");
-    _barArrowDown.classList.add("scrollBarDown", "unselectable");
+    _barArrowUp.classList.add("scrollBarUp");
+    _barArrowDown.classList.add("scrollBarDown");
+    barImg1.classList.add("unselectable");
+    barImg2.classList.add("unselectable");
     _barArrowUp.style.visibility = "hidden";
     _barArrowDown.style.visibility = "hidden";
     
@@ -126,8 +128,8 @@ ScrollBar.setBars = function (state)
     
     this.content = document.querySelector("#mainContent");
     
-    this.barArrowUp.onmousedown = () => { this.MoveScroll(-5); };
-    this.barArrowDown.onmousedown = () => { this.MoveScroll(5); };
+    this.barArrowUp.onmousedown = () => { this.MoveScroll(-10); };
+    this.barArrowDown.onmousedown = () => { this.MoveScroll(10); };
     this.barArrowUp.onmouseup = () => { this.StopScroll(); };
     this.barArrowDown.onmouseup = () => { this.StopScroll(); };
     window.onmouseover = () => { this.StopScroll(); };
