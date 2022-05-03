@@ -1,7 +1,6 @@
 window.onload = () => {
     loadScene();
     screenTrans.Start();
-    setScrolling(false);
 };
 
 function loadScene ()
@@ -89,8 +88,8 @@ ScrollBar.setBars = function (state)
         else if (state == false)
         {
             clearInterval(this.scrollInterval);
-            this.barArrowUp.style.visibility = "hidden";
-            this.barArrowDown.style.visibility = "hidden";
+            this.barArrowUp.remove();
+            this.barArrowDown.remove();
         }
         else
         {
