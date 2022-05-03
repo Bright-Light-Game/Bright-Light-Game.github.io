@@ -1,6 +1,6 @@
 window.onload = () => {
     loadScene();
-    screenTrans();
+    screenTrans.Start();
     setScrolling(false);
 };
 
@@ -15,50 +15,61 @@ function loadScene ()
     }
 }
 
-
 // ----------Screen Transition
 function screenTrans ()
 {
-    let pageAnc = document.querySelectorAll("a:not([target='_blank'])");
-    let fadeEl = document.querySelector(".fadeObject");
-    let footer = document.querySelector("footer");
-    let fadeTime = 1;
+    ThrowError(1);
+}
+
+screenTrans.Start = function ()
+{
+    this.body = document.body;
+    this.fadeEl = document.querySelector(".fadeObject");
+    this.footer = document.querySelector("footer");
+    this.fadeTime = 1;
     
-    fadeEl.style.opacity = "0.0";
-    fadeEl.style.transition = "opacity 1s"
-    footer.style.transform = "none";
-    footer.style.transition = "transform 1s";
+    this.fadeEl.style.opacity = "0.0";
+    this.fadeEl.style.transition = `opacity ${1 * this.fadeTime}s`;
+    this.footer.style.transform = "none";
+    this.footer.style.transition = `transform ${1 * this.fadeTime}s`;
     
     setTimeout(() => {
-        fadeEl.style.pointerEvents = "none";
-        fadeEl.style.transition = "none"
-        footer.style.transition = "none";
+        this.fadeEl.style.pointerEvents = "none";
+        this.fadeEl.style.transition = "none"
+        this.footer.style.transition = "none";
         
         ScrollBar.setBars(true);
-    }, (fadeTime * 1000));
+    }, (1000 * this.fadeTime));
+    
+    setInterval(() => { this.ScanAnchors(); }, 2);
+};
+
+screenTrans.ScanAnchors = function ()
+{
+    let pageAnc = document.querySelectorAll("a:not([target='_blank'])");
     
     for (let i = 0; i < pageAnc.length; i++)
     {
         let anchor = pageAnc[i];
         
-        anchor.addEventListener("click", e => {
+        anchor.onclick = e => {
             e.preventDefault();
-            let target = e.target.href;
+            let target = anchor.href;
             
             ScrollBar.setBars(false);
             
-            fadeEl.style.pointerEvents = "all";
-            fadeEl.style.opacity = "1.0";
-            fadeEl.style.transition = "opacity 0.5s"
-            footer.style.transform = "translateY(100%)";
-            footer.style.transition = "transform 0.5s";
+            this.fadeEl.style.pointerEvents = "all";
+            this.fadeEl.style.opacity = "1.0";
+            this.fadeEl.style.transition = `opacity ${0.5 * this.fadeTime}s`;
+            this.footer.style.transform = "translateY(100%)";
+            this.footer.style.transition = `transform ${0.5 * this.fadeTime}s`;
             
             setTimeout(() => {
                 window.location.href = target;
-            }, (fadeTime * 500));
-        });
+            }, (500 * this.fadeTime));
+        };
     }
-}
+};
 
 
 // ----------Scrollbar
