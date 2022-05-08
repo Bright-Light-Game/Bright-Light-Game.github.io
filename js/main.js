@@ -40,7 +40,7 @@ screenTrans.Start = function ()
         ScrollBar.setBars(true);
     }, (1000 * this.fadeTime));
     
-    setInterval(() => { this.ScanAnchors(); }, 2);
+    setInterval(() => { this.ScanAnchors(); }, 16.67);
 };
 
 screenTrans.ScanAnchors = function ()
@@ -165,7 +165,7 @@ ScrollBar.detectScreen = function ()
             this.barArrowUp.style.visibility = "hidden";
             this.barArrowDown.style.visibility = "hidden";
         }
-    }, 2);
+    }, 16.67);
 };
 
 ScrollBar.MoveScroll = function (amount)
