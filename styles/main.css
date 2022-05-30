@@ -1,30 +1,25 @@
 /*----------Variables*/
 :root
 {
-    --pixel-unit : 0.75px;
+    --pixel-unit : 1.5px;
 }
 
 
 /*----------Elements*/
 html, body
 {
-    padding : 0;
+    height : 100%;
+    background : black;
+    color : white;
+    font-family : lightweight;
+    overflow : hidden;
     margin : 0;
-    font-family : "Archivo Narrow", sans-serif;
-    font-size : 18px;
-    scroll-behavior : smooth;
+    padding : 0;
 }
 
-body
-{
-    overflow-x : hidden;
-    overflow-y : hidden;
-    text-size-adjust : none;
-    background : rgb(15, 60, 134);
-}
-
-body * > *:not(.selectable, code),
-.unselectable
+*:not(.selectable, .selectable > *),
+.unselectable,
+.unselectable > *
 {
     -moz-user-select : none;
     -khtml-user-select : none;
@@ -34,47 +29,42 @@ body * > *:not(.selectable, code),
 }
 
 /*-----Sections*/
+body
+{
+    display : flex;
+    flex-direction : column;
+    text-size-adjust : none;
+}
+
 header
 {
-    position : fixed;
-    display : flex;
-    width : 100%;
-    height : calc(60 * var(--pixel-unit));
-    padding: 10px 0;
-    z-index : 10;
-    background : white;
+    padding : 2px 0px;
 }
 
 main
 {
-    position : relative;
+    flex : 1;
+    overflow-x : hidden;
+    display : flex;
+}
+
+#mainContent
+{
     overflow-x : hidden;
     overflow-wrap : break-word;
-    top : calc(87 * var(--pixel-unit));
-    padding : 14px;
-    background : linear-gradient(rgb(15, 60, 134), rgba(13, 5, 61));
-    color : white;
+    scroll-behavior : smooth;
+    width : 100%;
+    padding : 8px;
 }
 
-#menu
+/*-----Footer*/
+footer
 {
-    position : fixed;
-    width : 75%;
-    height : 100%;
-    top : 0;
-    left : 0;
-    padding : calc(120 * var(--pixel-unit)) 0 14px 0;
-    transform : translateX(-100%);
-    scroll-behavior : smooth;
-    z-index : 9;
     background : white;
     color : black;
-}
-
-#menuNav
-{
-    overflow-y : scroll;
-    height : 62%;
+    transform : translateY(100%);
+    padding : 2px;
+    font-family : small-spaces;
 }
 
 /*-----Components*/
@@ -86,38 +76,13 @@ img:not(.anti-aliased)
     -ms-interpolation-mode : nearest-neighbor;
 }
 
-code
-{
-    display : block;
-    overflow : auto;
-    max-width : 84vw;
-    padding : 12px;
-    border-radius : 10px;
-    font-size : 12px;
-    color : #adbac7;
-    background : #22272e;
-}
-
-iframe
-{
-    display : block;
-    min-width : 208px;
-    border : none;
-    background : white;
-}
-
-h1, h2
-{
-    margin : 4px auto 8px;
-}
-
 /*Anchors*/
 a
 {
-    color : orange;
+    color : cyan;
 }
 
-#menu a
+header a
 {
     text-decoration : none;
     color : inherit;
@@ -134,8 +99,7 @@ noscript
     z-index : 690;
     display : flex;
     flex-direction : column;
-    background : rgba(13, 5, 61);
-    color : white;
+    background : black;
     pointer-events : all;
 }
 
@@ -148,219 +112,108 @@ noscript div
 }
 
 
-/*----------Instances*/
-/*-----Header and Menu*/
-#logo
-{
-    position : relative;
-    display : inline-block;
-    margin : auto;
-}
-
-#logo img
-{
-    width : calc(60 * var(--pixel-unit));
-}
-
-#sidelogo
-{
-    position : absolute;
-    display : inline-block;
-    right : 10px;
-    margin : auto;
-}
-
-#sidelogo img
-{
-    width : calc(60 * var(--pixel-unit));
-}
-
-#btnMenu
-{
-    position : absolute;
-    overflow : hidden;
-    width : calc(60 * var(--pixel-unit));
-    height : calc(60 * var(--pixel-unit));
-    left : 10px;
-    cursor : pointer;
-    background : black;
-}
-
-#btnMenu img
-{
-    width : calc(540 * var(--pixel-unit));
-}
-
-#menuOverlay
-{
-    position : fixed;
-    width : 100%;
-    height : 100%;
-    top : 0;
-    left : 0;
-    padding : calc(120 * var(--pixel-unit)) 14px 0;
-    z-index : 8;
-    border : none;
-}
-
-#menuSiteInfo
-{
-    position : absolute;
-    width : auto;
-    padding : 18px;
-    top : calc(75vh + (75 * var(--pixel-unit)));
-}
-
-/*Socials*/
-#menuSocials
-{
-    position : absolute;
-    display : flex;
-    width : calc(240 * var(--pixel-unit));
-    height : calc(60 * var(--pixel-unit));
-    padding : 12px;
-    top : 75vh;
-}
-
-#menuSocials a
-{
-    display : block;
-    overflow : hidden;
-    width : calc(60 * var(--pixel-unit));
-    height : calc(60 * var(--pixel-unit));
-    margin : auto;
-}
-
-#menuSocials img
-{
-    position : relative;
-    width : calc(180 * var(--pixel-unit));
-}
-
-#menuBtnTwt
-{
-    left : calc(-60 * var(--pixel-unit));;
-}
-
-#menuBtnInsta
-{
-    left : calc(-120 * var(--pixel-unit));;
-}
-
-
 /*----------Classes*/
-/*-----Markdown*/
+/*-----Header*/
+.navList
+{
+    list-style-type : none;
+    display : flex;
+    flex-direction : row;
+    justify-content : center;
+    margin : 8px;
+    padding : 0;
+}
+
+.navList li
+{
+    margin : space-between;
+    padding : 8px;
+    font-size : 20px;
+}
+
+.currentPage
+{
+    font-weight : bolder;
+}
+
 .line
 {
-    margin : 0;
+    background : white;
     border : none;
-    width : 100%;
-    height : 2px;
-    background : rgba(255, 255, 255, 0.75);
+    height : 1px;
 }
 
-.small-text
+/*-----Footer*/
+.footerElements
 {
-    font-size : 13px;
+    display : flex;
+    flex-direction : row;
+    flex-wrap : wrap;
 }
 
-.quote
+.footerText1
 {
-    width : 87%;
-    margin : 16px 0 16px 8px;
-    border-left : 3px solid rgba(255, 255, 255, 0.75);
-    padding-left : 12px;
+    padding : 8px;
+    padding-top : 4px;
+    margin-bottom: 2px;
+    margin-right : auto;
 }
 
-/*-----Menu*/
-.menuList
+.buttonList
+{
+    padding : 4px;
+    padding-bottom : 12px;
+    display : flex;
+    flex-direction : row;
+    flex-wrap : wrap;
+}
+
+.buttonObject
+{
+    width : calc(30 * var(--pixel-unit));
+    height : calc(30 * var(--pixel-unit));
+    overflow : hidden;
+    margin : calc(2 * var(--pixel-unit));
+    display : flex;
+    align-content : flex-start;
+}
+
+.buttonObject a
 {
     position : relative;
-    width : auto;
-    padding : 15px;
-    font-size : 22px;
-    text-transform : uppercase;
-    cursor : pointer;
 }
 
-.menuList div
+.buttonObject img
 {
-    position : absolute;
-    display : inline-block;
-    overflow : hidden;
-    top : 8px;
-    right : 12px;
-    width : calc(60 * var(--pixel-unit));
-    height : calc(60 * var(--pixel-unit));
+    position : relative;
+    width : calc(90 * var(--pixel-unit));
 }
 
-.menuList div img
+.btn_twt img
 {
-    width : calc(540 * var(--pixel-unit));
+    top : calc(-30 * var(--pixel-unit));
 }
 
-.menuDropdown
+.btn_yt img
 {
-    max-height : 0;
-    overflow : hidden;
+    top : calc(-60 * var(--pixel-unit));
 }
 
-.menuSubList
+.btn_fb img
 {
-    padding : 13px;
-    margin-left : 30px;
-    font-size : 20px;
-    background : rgba(0, 0, 0, 0.13);
+    top : calc(-90 * var(--pixel-unit));
 }
 
-/*-----FAQ*/
-.faq-question
+.btn_insta img
 {
-    margin : 0;
+    top : calc(-120 * var(--pixel-unit));
 }
 
-.faq-answer
+/*-----Info Tags*/
+.infoTag1
 {
-    margin-top : 4px;
-}
-
-/*-----Docs Related*/
-.doc h3
-{
-    margin : 16px auto 8px;
-}
-
-.doc-embed
-{
-    overflow : auto;
-    margin : 12px auto;
-    padding : 12px;
-    border : 1px solid white;
-    border-radius : 4px;
-    color : black;
-    background : rgba(255, 255, 255, 0.5);
-}
-
-.doc-embed a
-{
-    color : green;
-}
-
-.doc-embed.link-list
-{
-    color : green;
-}
-
-.doc-embed.link-list a
-{
-    display : block;
-    margin : 3px auto;
-}
-
-.doc-embed .doc-sublink-list a
-{
-    display : block;
-    margin : 3px auto 3px 24px;
+    background : darkorange;
+    padding : 8px;
 }
 
 /*-----Objects*/
@@ -369,9 +222,14 @@ noscript div
     pointer-events : none;
 }
 
+.cursorObject
+{
+    animation : cursorObject linear 1s infinite;
+}
+
 .fadeObject
 {
-    background : rgb(15, 60, 134);
+    background : black;
     border : none;
     position : fixed;
     margin : 0;
@@ -384,32 +242,139 @@ noscript div
     pointer-events : all;
 }
 
-.textbtn
+/*Scrollbar*/
+.scrollBar
 {
-    display : inline-block;
-    margin : auto 8px 8px auto;
-    padding : 10px;
-    border-radius : 4px;
-    cursor : pointer;
-    color : white;
+    padding : calc(8 * var(--pixel-unit));
+    display : flex;
+    flex-direction : column;
+    flex-wrap : wrap;
+    width : calc(22 * var(--pixel-unit));
+    justify-content : center;
+    align-content : center;
+}
+
+.scrollBar div
+{
+    position : relative;
+    width : calc(12 * var(--pixel-unit));
+    height : calc(12 * var(--pixel-unit));
+    overflow : hidden;
+}
+
+.scrollBarUp
+{
+    margin-top : calc(8 * var(--pixel-unit));
+    margin-bottom : auto;
+    animation : scrollBarUp linear 1s infinite;
+}
+
+.scrollBarDown
+{
+    margin-top : auto;
+    margin-bottom : calc(8 * var(--pixel-unit));
+    animation : scrollBarDown linear 1s infinite;
+}
+
+.scrollBar img
+{
+    position : relative;
+    top : calc(-12 * var(--pixel-unit));
+    left : calc(-12 *var(--pixel-unit));
+    width : calc(24 * var(--pixel-unit));
+}
+
+/*Update Article*/
+.updateArticle
+{
     background : black;
+    max-width : 480px;
+    padding : 10px;
+    border : 4px solid white;
+    margin : 5px auto;
 }
 
-/*Code Output Frame*/
-.codeoutputframe
+.updateArticle div
 {
-    display : table;
-    min-width : 210px;
-    margin-bottom : 14px;
-    padding : 16px;
-    border-radius : 4px;
-    background : white;
+    position : relative;
+    width : auto;
 }
 
-.codeoutputframe .codeframe
+.updateArticle p
 {
-    overflow : auto;
-    max-width : 83vw;
-    border : 1px solid black;
-    background : rgba(0, 0, 0, 0.25);
+    margin : 0;
+}
+
+.updateHeader
+{
+    display : flex;
+    justify-content : space-between;
+    margin-bottom : 30px;
+    font-weight : bold;
+    font-size : 18px;
+}
+
+.updateDate
+{
+    direction : rtl;
+}
+
+.updateContent img
+{
+    position : relative;
+    max-width : 100%;
+    display : block;
+    margin : 16px auto;
+}
+
+
+/*----------Events*/
+.navList a:focus,
+.navList a:hover
+{
+    opacity : 0.5;
+}
+
+.buttonObject a:focus,
+.buttonObject a:hover
+{
+    left : calc(-30 * var(--pixel-unit));
+}
+
+.buttonObject a:active
+{
+    left : calc(-60 * var(--pixel-unit));
+}
+
+
+/*----------Attributes*/
+/*-----Scroll Bar*/
+[data-scrollBar="hidden"]
+{
+    -ms-overflow-style : none;
+    scrollbar-width : none;
+    overflow-y : scroll;
+    overflow-x : hidden;
+    overflow-wrap : break-word;
+}
+
+
+[data-scrollBar="hidden"]::-webkit-scrollbar
+{
+    display: none;
+}
+
+[data-scrollBar="show"]
+{
+    -ms-overflow-style : initial;
+    scrollbar-width : initial;
+    overflow-y : initial;
+    overflow-x : initial;
+    overflow-wrap : initial;
+}
+
+
+[data-scrollBar="show"]::-webkit-scrollbar
+{
+    display: initial;
 }
