@@ -17,7 +17,7 @@ html, body
     padding : 0;
 }
 
-:not(.selectable)
+*:not(.selectable)
 .unselectable:not(.selectable),
 {
     -moz-user-select : none;
