@@ -185,7 +185,7 @@ noscript div
 .buttonObject img
 {
     position : relative;
-    width : calc(150 * var(--pixel-unit));
+    height : calc(30 * var(--pixel-unit));
 }
 
 .btn_twt img
