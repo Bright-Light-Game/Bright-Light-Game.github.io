@@ -17,8 +17,8 @@ html, body
     padding : 0;
 }
 
-*:not(.selectable)
-.unselectable:not(.selectable),
+:not(.selectable),
+.unselectable:not(.selectable)
 {
     -moz-user-select : none;
     -khtml-user-select : none;
@@ -185,27 +185,27 @@ noscript div
 .buttonObject img
 {
     position : relative;
-    width : calc(90 * var(--pixel-unit));
+    width : calc(150 * var(--pixel-unit));
 }
 
 .btn_twt img
 {
-    top : calc(-30 * var(--pixel-unit));
+    left : calc(-30 * var(--pixel-unit));
 }
 
 .btn_yt img
 {
-    top : calc(-60 * var(--pixel-unit));
+    left : calc(-60 * var(--pixel-unit));
 }
 
 .btn_fb img
 {
-    top : calc(-90 * var(--pixel-unit));
+    left : calc(-90 * var(--pixel-unit));
 }
 
 .btn_insta img
 {
-    top : calc(-120 * var(--pixel-unit));
+    left : calc(-120 * var(--pixel-unit));
 }
 
 /*-----Info Tags*/
@@ -332,17 +332,6 @@ noscript div
 .navList a:hover
 {
     opacity : 0.5;
-}
-
-.buttonObject a:focus,
-.buttonObject a:hover
-{
-    left : calc(-30 * var(--pixel-unit));
-}
-
-.buttonObject a:active
-{
-    left : calc(-60 * var(--pixel-unit));
 }
 
 
