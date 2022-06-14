@@ -63,6 +63,7 @@ footer
     color : black;
     transform : translateY(100%);
     padding : 2px;
+    border-top : 1px solid black;
     font-family : small-spaces;
 }
 
