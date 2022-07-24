@@ -100,13 +100,15 @@ ScrollBar.setBars = function (state)
     }
     
     this.scrollBar = document.querySelector(".scrollBar");
+    let _barUp = document.createElement("div");
+    let _barDown = document.createElement("div");
     let _barArrowUp = document.createElement("div");
     let _barArrowDown = document.createElement("div");
     let barImg1 = document.createElement("img");
     let barImg2 = document.createElement("img");
     
-    _barArrowUp.classList.add("scrollBarUp");
-    _barArrowDown.classList.add("scrollBarDown");
+    _barUp.classList.add("scrollBarUp");
+    _barDown.classList.add("scrollBarDown");
     barImg1.classList.add("unselectable");
     barImg2.classList.add("unselectable");
     _barArrowUp.style.visibility = "hidden";
@@ -119,20 +121,28 @@ ScrollBar.setBars = function (state)
     
     _barArrowUp.appendChild(barImg1);
     _barArrowDown.appendChild(barImg2);
+    _barUp.appendChild(_barArrowUp);
+    _barDown.appendChild(_barArrowDown);
     
-    this.scrollBar.appendChild(_barArrowUp);
-    this.scrollBar.appendChild(_barArrowDown);
+    this.scrollBar.appendChild(_barUp);
+    this.scrollBar.appendChild(_barDown);
     
-    this.barArrowUp = document.querySelector(".scrollBarUp");
-    this.barArrowDown = document.querySelector(".scrollBarDown");
+    this.barUp = document.querySelector(".scrollBarUp");
+    this.barDown = document.querySelector(".scrollBarDown");
     
     this.content = document.querySelector("#mainContent");
     
-    this.barArrowUp.onmousedown = () => { this.MoveScroll(-10); };
-    this.barArrowDown.onmousedown = () => { this.MoveScroll(10); };
-    this.barArrowUp.onmouseup = () => { this.StopScroll(); };
-    this.barArrowDown.onmouseup = () => { this.StopScroll(); };
+    this.barUp.onmousedown = () => { this.MoveScroll(-10); };
+    this.barDown.onmousedown = () => { this.MoveScroll(10); };
+    this.barUp.onmouseup = () => { this.StopScroll(); };
+    this.barDown.onmouseup = () => { this.StopScroll(); };
     window.onmouseover = () => { this.StopScroll(); };
+    
+    this.barUp.ontouchstart = () => { this.MoveScroll(-10); };
+    this.barDown.ontouchstart = () => { this.MoveScroll(10); };
+    this.barUp.ontouchend = () => { this.StopScroll(); };
+    this.barDown.ontouchend = () => { this.StopScroll(); };
+    window.ontouchmove = () => { this.StopScroll(); };
     
     this.detectScreen();
 };
@@ -146,24 +156,24 @@ ScrollBar.detectScreen = function ()
         {
             if (scrollPos <= 0)
             {
-                this.barArrowUp.style.visibility = "hidden";
-                this.barArrowDown.style.visibility = "visible";
+                this.barUp.style.visibility = "hidden";
+                this.barDown.style.visibility = "visible";
             }
             else if (scrollPos >= 1)
             {
-                this.barArrowUp.style.visibility = "visible";
-                this.barArrowDown.style.visibility = "hidden";
+                this.barUp.style.visibility = "visible";
+                this.barDown.style.visibility = "hidden";
             }
             else
             {
-                this.barArrowUp.style.visibility = "visible";
-                this.barArrowDown.style.visibility = "visible";
+                this.barUp.style.visibility = "visible";
+                this.barDown.style.visibility = "visible";
             }
         }
         else
         {
-            this.barArrowUp.style.visibility = "hidden";
-            this.barArrowDown.style.visibility = "hidden";
+            this.barUp.style.visibility = "hidden";
+            this.barDown.style.visibility = "hidden";
         }
     }, 16.67);
 };
