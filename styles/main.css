@@ -252,7 +252,7 @@ footer .buttonObject img
     width : calc(22 * var(--pixel-unit));
     justify-content : center;
     align-content : center;
-    background :;
+    background : red;
 }
 
 .scrollBar div
@@ -263,7 +263,7 @@ footer .buttonObject img
     background : green;
 }
 
-.scrollBar div > div
+.scrollBar > div div
 {
     width : calc(12 * var(--pixel-unit));
     height : calc(12 * var(--pixel-unit));
