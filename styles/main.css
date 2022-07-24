@@ -245,11 +245,11 @@ footer .buttonObject img
 /*Scrollbar*/
 .scrollBar
 {
-    padding : calc(8 * var(--pixel-unit));
+    padding : calc(2 * var(--pixel-unit));
     display : flex;
     flex-direction : column;
     flex-wrap : wrap;
-    width : calc(22 * var(--pixel-unit));
+    width : calc(28 * var(--pixel-unit));
     justify-content : center;
     align-content : center;
     background : red;
@@ -258,8 +258,8 @@ footer .buttonObject img
 .scrollBar div
 {
     position : relative;
-    width : calc(22 * var(--pixel-unit));
-    height : calc(22 * var(--pixel-unit));
+    width : calc(28 * var(--pixel-unit));
+    height : calc(28 * var(--pixel-unit));
     background : green;
 }
 
