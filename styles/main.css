@@ -284,11 +284,11 @@ footer .buttonObject img
 
 .scrollBar img
 {
-    position : relative;
+    /*position : relative;
     top : calc(-12 * var(--pixel-unit));
     left : calc(-12 *var(--pixel-unit));
     width : calc(24 * var(--pixel-unit));
-    background : yellow;
+    background : yellow;*/
 }
 
 /*Update Article*/
