@@ -258,8 +258,8 @@ footer .buttonObject img
 .scrollBar div
 {
     position : relative;
-    width : calc(26 * var(--pixel-unit));
-    height : calc(26 * var(--pixel-unit));
+    width : calc(24 * var(--pixel-unit));
+    height : calc(24 * var(--pixel-unit));
     background : green;
 }
 
