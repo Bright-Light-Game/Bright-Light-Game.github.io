@@ -257,22 +257,27 @@ footer .buttonObject img
 .scrollBar div
 {
     position : relative;
-    width : calc(12 * var(--pixel-unit));
-    height : calc(12 * var(--pixel-unit));
-    overflow : hidden;
+    width : calc(22 * var(--pixel-unit));
+    height : calc(22 * var(--pixel-unit));
+    background : red;
 }
 
-.scrollBarUp
+.scrollBar div div
 {
-    margin-top : calc(8 * var(--pixel-unit));
-    margin-bottom : auto;
+    width : calc(12 * var(--pixel-unit));
+    height : calc(12 * var(--pixel-unit));
+    margin : auto;
+    overflow : hidden;
+    background : green;
+}
+
+.scrollBarUp div
+{
     animation : scrollBarUp linear 1s infinite;
 }
 
-.scrollBarDown
+.scrollBarDown div
 {
-    margin-top : auto;
-    margin-bottom : calc(8 * var(--pixel-unit));
     animation : scrollBarDown linear 1s infinite;
 }
 
