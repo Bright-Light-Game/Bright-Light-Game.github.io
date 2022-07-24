@@ -88,8 +88,8 @@ ScrollBar.setBars = function (state)
         else if (state == false)
         {
             clearInterval(this.scrollInterval);
-            this.barArrowUp.remove();
-            this.barArrowDown.remove();
+            this.barUp.remove();
+            this.barDown.remove();
         }
         else
         {
@@ -140,9 +140,9 @@ ScrollBar.setBars = function (state)
     
     this.barUp.ontouchstart = () => { this.MoveScroll(-10); };
     this.barDown.ontouchstart = () => { this.MoveScroll(10); };
-    this.barUp.ontouchend = () => { this.StopScroll(); };
+    /*this.barUp.ontouchend = () => { this.StopScroll(); };
     this.barDown.ontouchend = () => { this.StopScroll(); };
-    window.ontouchmove = () => { this.StopScroll(); };
+    window.ontouchmove = () => { this.StopScroll(); };*/
     
     this.detectScreen();
 };
