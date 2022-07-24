@@ -250,8 +250,6 @@ footer .buttonObject img
     flex-direction : column;
     flex-wrap : wrap;
     width : calc(28 * var(--pixel-unit));
-    justify-content : center;
-    align-content : center;
     background : red;
 }
 
@@ -267,19 +265,17 @@ footer .buttonObject img
 {
     width : calc(12 * var(--pixel-unit));
     height : calc(12 * var(--pixel-unit));
-    margin : auto;
-    overflow : hidden;
     background : blue;
 }
 
 .scrollBarUp div
 {
-    animation : scrollBarUp linear 1s infinite;
+    /*animation : scrollBarUp linear 1s infinite;*/
 }
 
 .scrollBarDown div
 {
-    animation : scrollBarDown linear 1s infinite;
+    /*animation : scrollBarDown linear 1s infinite;*/
 }
 
 .scrollBar img
