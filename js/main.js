@@ -111,8 +111,8 @@ ScrollBar.setBars = function (state)
     _barDown.classList.add("scrollBarDown");
     barImg1.classList.add("unselectable");
     barImg2.classList.add("unselectable");
-    _barArrowUp.style.visibility = "hidden";
-    _barArrowDown.style.visibility = "hidden";
+    _barUp.style.visibility = "hidden";
+    _barDown.style.visibility = "hidden";
     
     let imgSrc = "/img/spr_ui12-12.png"; 
     
