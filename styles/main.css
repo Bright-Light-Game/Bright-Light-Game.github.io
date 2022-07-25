@@ -248,7 +248,7 @@ footer .buttonObject img
     display : flex;
     flex-direction : column;
     flex-wrap : wrap;
-    width : calc(28 * var(--pixel-unit));
+    width : calc(30 * var(--pixel-unit));
     background : red;
 }
 
