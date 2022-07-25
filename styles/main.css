@@ -258,6 +258,7 @@ footer .buttonObject img
     width : calc(25.5 * var(--pixel-unit));
     height : calc(25.5 * var(--pixel-unit));
     background : green;
+    cursor : pointer;
 }
 
 .scrollBarUp div,
@@ -270,21 +271,21 @@ footer .buttonObject img
 
 .scrollBarUp div
 {
-    /*animation : scrollBarUp linear 1s infinite;*/
+    animation : scrollBarUp linear 1s infinite;
 }
 
 .scrollBarDown div
 {
-    /*animation : scrollBarDown linear 1s infinite;*/
+    animation : scrollBarDown linear 1s infinite;
 }
 
 .scrollBar img
 {
-    /*position : relative;
+    position : relative;
     top : calc(-12 * var(--pixel-unit));
     left : calc(-12 *var(--pixel-unit));
     width : calc(24 * var(--pixel-unit));
-    background : yellow;*/
+    background : yellow;
 }
 
 /*Update Article*/
