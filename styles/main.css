@@ -251,7 +251,7 @@ footer .buttonObject img
     width : calc(30 * var(--pixel-unit));
 }
 
-.scrollBar div
+.scrollBar > div
 {
     display : flex;
     position : relative;
