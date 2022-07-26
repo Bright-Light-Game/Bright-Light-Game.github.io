@@ -82,24 +82,17 @@ ScrollBar.setBars = function (state)
     if (this.scrollInterval != null)
     {
         clearInterval(this.scrollInterval);
-        this.scrollInterval = null;
         
         this.barUp.remove();
         this.barDown.remove();
-    }
-    
-    if (!state)
-    {
-        if (this.scrollInterval == null)
+        
+        if (!state)
         {
-            ThrowError(2);
-        }
-        else
-        {
-            ThrowError(0);
+            if (this.scrollInterval == null) ThrowError(2);
+            return this.scrollInterval = null;
         }
         
-        return;
+        this.scrollInterval = null;
     }
     
     this.scrollBar = document.querySelector(".scrollBar");
