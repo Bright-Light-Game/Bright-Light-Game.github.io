@@ -249,16 +249,25 @@ footer .buttonObject img
     flex-direction : column;
     flex-wrap : wrap;
     width : calc(30 * var(--pixel-unit));
-    background : red;
 }
 
 .scrollBar div
 {
+    display : flex;
     position : relative;
     width : calc(25.5 * var(--pixel-unit));
     height : calc(25.5 * var(--pixel-unit));
-    background : green;
     cursor : pointer;
+}
+
+.scrollBarUp
+{
+    margin-bottom : auto;
+}
+
+.scrollBarDown
+{
+    margin-top : auto;
 }
 
 .scrollBarUp div,
@@ -266,7 +275,8 @@ footer .buttonObject img
 {
     width : calc(12 * var(--pixel-unit));
     height : calc(12 * var(--pixel-unit));
-    background : blue;
+    margin : auto;
+    overflow : hidden;
 }
 
 .scrollBarUp div
@@ -285,7 +295,6 @@ footer .buttonObject img
     top : calc(-12 * var(--pixel-unit));
     left : calc(-12 *var(--pixel-unit));
     width : calc(24 * var(--pixel-unit));
-    background : yellow;
 }
 
 /*Update Article*/
@@ -351,7 +360,6 @@ footer .buttonObject img
     overflow-wrap : break-word;
 }
 
-
 [data-scrollBar="hidden"]::-webkit-scrollbar
 {
     display: none;
@@ -365,7 +373,6 @@ footer .buttonObject img
     overflow-x : initial;
     overflow-wrap : initial;
 }
-
 
 [data-scrollBar="show"]::-webkit-scrollbar
 {
