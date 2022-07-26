@@ -79,17 +79,20 @@ function ScrollBar ()
 
 ScrollBar.setBars = function (state)
 {
+    if (this.scrollInterval != null)
+    {
+        clearInterval(this.scrollInterval);
+        this.scrollInterval = null;
+        
+        this.barUp.remove();
+        this.barDown.remove();
+    }
+    
     if (!state)
     {
         if (this.scrollInterval == null)
         {
             ThrowError(2);
-        }
-        else if (state == false)
-        {
-            clearInterval(this.scrollInterval);
-            this.barUp.remove();
-            this.barDown.remove();
         }
         else
         {
@@ -132,16 +135,17 @@ ScrollBar.setBars = function (state)
     
     this.content = document.querySelector("#mainContent");
     
-    this.barUp.onclick = () => { this.MoveScroll(-10); };
-    this.barDown.onclick = () => { this.MoveScroll(10); };
-    
+    this.barUp.onmousedown = () => { this.MoveScroll(-10); };
+    this.barDown.onmousedown = () => { this.MoveScroll(10); };
     this.barUp.onmouseup = () => { this.StopScroll(); };
     this.barDown.onmouseup = () => { this.StopScroll(); };
     window.onmouseover = () => { this.StopScroll(); };
     
-    /*this.barUp.ontouchend = () => { this.StopScroll(); };
+    this.barUp.ontouchstart = () => { this.MoveScroll(-10); };
+    this.barDown.ontouchstart = () => { this.MoveScroll(10); }
+    this.barUp.ontouchend = () => { this.StopScroll(); };
     this.barDown.ontouchend = () => { this.StopScroll(); };
-    window.ontouchmove = () => { this.StopScroll(); };*/
+    /*window.ontouchmove = () => { this.StopScroll(); };*/
     
     this.detectScreen();
 };
