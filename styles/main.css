@@ -249,6 +249,7 @@ footer .buttonObject img
     flex-direction : column;
     flex-wrap : wrap;
     width : calc(30 * var(--pixel-unit));
+    padding-bottom : 8px;
 }
 
 .scrollBar > div
