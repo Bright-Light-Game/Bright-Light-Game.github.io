@@ -132,14 +132,13 @@ ScrollBar.setBars = function (state)
     
     this.content = document.querySelector("#mainContent");
     
-    this.barUp.onmousedown = () => { this.MoveScroll(-10); };
-    this.barDown.onmousedown = () => { this.MoveScroll(10); };
+    this.barUp.onclick = () => { this.MoveScroll(-10); };
+    this.barDown.onclick = () => { this.MoveScroll(10); };
+    
     this.barUp.onmouseup = () => { this.StopScroll(); };
     this.barDown.onmouseup = () => { this.StopScroll(); };
     window.onmouseover = () => { this.StopScroll(); };
     
-    this.barUp.ontouchstart = () => { this.MoveScroll(-10); };
-    this.barDown.ontouchstart = () => { this.MoveScroll(10); };
     /*this.barUp.ontouchend = () => { this.StopScroll(); };
     this.barDown.ontouchend = () => { this.StopScroll(); };
     window.ontouchmove = () => { this.StopScroll(); };*/
