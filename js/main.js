@@ -368,38 +368,8 @@ class Loop
 class screenTrans
 {
     static #loaded = false;
-    static fadeTime = 1;
     
-    static async Set ()
-    {
-        if (this.#loaded) return;
-        
-        data.html.body.style.opacity = "1";
-        data.html.footer.style.transform = "none";
-        
-        if (!data.openedfromssos)
-        {
-            data.html.body.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
-            
-            data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
-        }
-        
-        data.html.content.style.opacity = "1";
-        data.html.content.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
-        
-        await data.delay(this.fadeTime);
-        
-        data.html.content.setAttribute("data-scrollable", "true");
-        
-        data.html.body.style.pointerEvents = "all";
-        
-        data.html.body.style.transition = "none";
-        data.html.footer.style.transition = "none";
-        
-        this.#loaded = true;
-        
-        Loop.append(() => { this.ScanAnchors(); });
-    }
+    static fadeTime = 1;
     
     static ScanAnchors ()
     {
@@ -469,6 +439,40 @@ class screenTrans
                 window.location.href = target;
             };
         }
+    }
+    
+    static Set ()
+    {
+        if (this.#loaded) return;
+        
+        data.html.body.style.opacity = "1";
+        data.html.footer.style.transform = "none";
+        
+        Data.once("OnDataLoad", async () => {
+            if (!data.openedfromssos)
+            {
+                data.html.body.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
+                
+                data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
+            }
+            
+            data.html.content.style.opacity = "1";
+            data.html.content.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
+            
+            await data.delay(this.fadeTime);
+            
+            data.html.content.setAttribute("data-scrollable", "true");
+            
+            data.html.body.style.pointerEvents = "all";
+            data.html.body.style.transition = "none";
+            data.html.footer.style.transition = "none";
+            
+            ScrollBar.Toggle(true);
+        });
+        
+        this.#loaded = true;
+        
+        Loop.append(() => { this.ScanAnchors(); });
     }
 }
 
@@ -568,10 +572,10 @@ class ScrollBar
 }
 
 
-Data.once("OnDataLoad", async () => {
+Data.once("WhileDataLoading", () => {
+    screenTrans.Set();
+})
+
+Data.once("OnDataLoad", () => {
     ScrollBar.Set();
-    
-    await screenTrans.Set();
-    
-    ScrollBar.Toggle(true);
 });
