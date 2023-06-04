@@ -374,7 +374,7 @@ class screenTrans
     {
         if (this.#loaded) return;
         
-        data.html.body.style.opacity = "1.0";
+        data.html.body.style.opacity = "1";
         data.html.footer.style.transform = "none";
         
         if (!data.openedfromssos)
@@ -384,7 +384,7 @@ class screenTrans
             data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
         }
         
-        data.html.content.style.opacity = "1.0";
+        data.html.content.style.opacity = "1";
         data.html.content.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
         
         await data.delay(this.fadeTime);
