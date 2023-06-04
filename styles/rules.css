@@ -2,24 +2,37 @@
 @font-face
 {
     font-family : "lightweight";
-    src : url(/fonts/lightweight.ttf);
+    src : url("/fonts/lightweight.ttf");
 }
 
 @font-face
 {
     font-family : "small-spaces";
-    src : url(/fonts/small-spaces.ttf);
+    src : url("/fonts/small-spaces.ttf");
 }
 
 
 /*----------Keyframes*/
 @keyframes fadeIO
 {
-    0% { opacity : 1.0; }
+    0% { opacity : 1; }
     
-    50% { opacity : 0.0; }
+    50% { opacity : 0; }
     
-    100% { opacity : 1.0; }
+    100% { opacity : 1; }
+}
+
+@keyframes shake
+{
+    0% { transform : translate(-1px, 2px) rotate(1deg); }
+    
+    25% { transform : translate(1px, 1px) rotate(-1deg); }
+    
+    50% { transform : translate(3px, -1px) rotate(-1deg); }
+    
+    70% { transform : translate(-2px, 4px) rotate(0deg); }
+    
+    100% { transform : translate(1px, -2px) rotate(-1deg); }
 }
 
 /*-----Objects*/

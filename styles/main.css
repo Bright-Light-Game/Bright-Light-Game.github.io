@@ -11,8 +11,8 @@ html, body
     height : 100%;
     background : black;
     color : white;
-    font-family : lightweight;
-    overflow : hidden;
+    font-family : "lightweight";
+    overflow : clip;
     margin : 0;
     padding : 0;
 }
@@ -33,6 +33,8 @@ body
     display : flex;
     flex-direction : column;
     text-size-adjust : none;
+    opacity : 0;
+    pointer-events : none;
 }
 
 header
@@ -43,17 +45,24 @@ header
 main
 {
     flex : 1;
-    overflow-x : hidden;
+    overflow : clip;
     display : flex;
 }
 
 #mainContent
 {
-    overflow-x : hidden;
+    overflow-x : clip;
+    overflow-y : clip;
     overflow-wrap : break-word;
     scroll-behavior : smooth;
     width : 100%;
     padding : 8px;
+    opacity : 0;
+}
+
+#mainContent[data-scrollable="true"]
+{
+    overflow-y : scroll;
 }
 
 /*-----Footer*/
@@ -74,6 +83,14 @@ img:not(.anti-aliased)
     image-rendering : crisp-edges;
     image-rendering : pixelated;
     -ms-interpolation-mode : nearest-neighbor;
+}
+
+blockquote
+{
+    width : 87%;
+    margin : 16px 0 16px 8px;
+    border-left : 3px solid white;
+    padding-left : 12px;
 }
 
 /*Anchors*/
@@ -113,6 +130,21 @@ noscript div
 
 
 /*----------Classes*/
+/*-----Markdown*/
+.line
+{
+    margin : 0;
+    border : none;
+    width : 100%;
+    height : 2px;
+    background : white;
+}
+
+.small-text
+{
+    font-size : 13px;
+}
+
 /*-----Header*/
 .navList
 {
@@ -172,7 +204,7 @@ footer .buttonObject
 {
     width : calc(30 * var(--pixel-unit));
     height : calc(30 * var(--pixel-unit));
-    overflow : hidden;
+    overflow : clip;
     margin : calc(2 * var(--pixel-unit));
     display : flex;
     align-content : flex-start;
@@ -216,6 +248,17 @@ footer .buttonObject img
     padding : 8px;
 }
 
+/*-----FAQ*/
+.faq-question
+{
+    margin : 0;
+}
+
+.faq-answer
+{
+    margin-top : 4px;
+}
+
 /*-----Objects*/
 .unselectable
 {
@@ -225,21 +268,6 @@ footer .buttonObject img
 .cursorObject
 {
     animation : cursorObject linear 1s infinite;
-}
-
-.fadeObject
-{
-    background : black;
-    border : none;
-    position : fixed;
-    margin : 0;
-    padding : 0;
-    top : 0;
-    bottom : 0;
-    left : 0;
-    right : 0;
-    z-index : 420;
-    pointer-events : all;
 }
 
 /*Scrollbar*/
@@ -261,31 +289,38 @@ footer .buttonObject img
     cursor : pointer;
 }
 
-.scrollBarUp
+.scrollBar > div[data-enabled="false"]
+{
+    visibility : hidden;
+    cursor : initial;
+    pointer-events : none;
+}
+
+.barUp
 {
     margin-bottom : auto;
 }
 
-.scrollBarDown
+.barDown
 {
     margin-top : auto;
 }
 
-.scrollBarUp div,
-.scrollBarDown div
+.barUp div,
+.barDown div
 {
     width : calc(12 * var(--pixel-unit));
     height : calc(12 * var(--pixel-unit));
     margin : auto;
-    overflow : hidden;
+    overflow : clip;
 }
 
-.scrollBarUp div
+.barUp div
 {
     animation : scrollBarUp linear 1s infinite;
 }
 
-.scrollBarDown div
+.barDown div
 {
     animation : scrollBarDown linear 1s infinite;
 }
@@ -356,26 +391,9 @@ footer .buttonObject img
 {
     -ms-overflow-style : none;
     scrollbar-width : none;
-    overflow-y : scroll;
-    overflow-x : hidden;
-    overflow-wrap : break-word;
 }
 
 [data-scrollBar="hidden"]::-webkit-scrollbar
 {
     display: none;
-}
-
-[data-scrollBar="show"]
-{
-    -ms-overflow-style : initial;
-    scrollbar-width : initial;
-    overflow-y : initial;
-    overflow-x : initial;
-    overflow-wrap : initial;
-}
-
-[data-scrollBar="show"]::-webkit-scrollbar
-{
-    display: initial;
 }
