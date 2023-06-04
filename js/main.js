@@ -251,7 +251,7 @@ class Loop
     
     static targetFrameRate = 60;
     static timeScale = 1;
-    static maximumDeltaTime = 0.1111111;
+    static maximumDeltaTime = 0.06666667;
     
     static get unscaledTime ()
     {
