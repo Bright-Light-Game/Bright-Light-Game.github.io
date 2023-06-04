@@ -418,9 +418,20 @@ class screenTrans
                 
                 const target = pageAnc[iA].href;
                 
-                const request = await fetch(target);
+                let invalidTarget = false;
                 
-                if (request.status !== 200 && request.status !== 404)
+                try
+                {
+                    const request = await fetch(target);
+                    
+                    if (request.status !== 200 && request.status !== 404) invalidTarget = true;
+                }
+                catch
+                {
+                    invalidTarget = true;
+                }
+                
+                if (invalidTarget)
                 {
                     data.html.body.style.animation = "none";
                     
