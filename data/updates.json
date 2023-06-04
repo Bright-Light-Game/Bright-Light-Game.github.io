@@ -2,7 +2,7 @@
     {
         "title" : "Title",
         "date" : "Date",
-        "content" : "Content<br>Content but looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong<br>Content before media but looooooooooooooooooooooooooooooooooooooooooooooooong<img class='unselectable' src='https://bright-light-game.github.io/img/seo/seoImage.png' alt='test image'>Content after media but looooooooooooooooooooooooooooooooooooooooong<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Hi"
+        "content" : "Content\nContent but looooooooooooooooooooooooooong\n![img](/img/seo/seoImage.png)"
     },
     {
         "title" : "Another one",
