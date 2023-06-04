@@ -14,7 +14,12 @@ var data = {
     samestyleoriginsites : [],
     openedfromssos : false,
     delay : async (time) => {
-        return new Promise(resolve => setTimeout(resolve, time + Loop.deltaTime));
+        if (time === 0) return;
+        
+        return new Promise(resolve => Loop.append(resolve, {
+            temporary : true,
+            delay : time
+        }));
     },
     isSsos : (src) => {
         const siteList = data.samestyleoriginsites;
@@ -218,7 +223,7 @@ class Data
         
         cookieJar.removeCookie("openedfromssos");
         
-        await data.delay(5);
+        await new Promise(resolve => setTimeout(resolve, 5));
         
         await this.#callEvent("WhileDataLoading");
         
@@ -238,9 +243,40 @@ class Loop
 {
     static #loaded = false;
     static #calls = [];
+    static #uTime = 0;
+    static #uDeltaTime = 0;
+    static #frameIndex = 0;
+    static #time = 0;
+    static #deltaTime = 0;
     
-    static deltaTime = 0;
-    static time = 0;
+    static targetFrameRate = 60;
+    static timeScale = 1;
+    static maximumDeltaTime = 0.1111111;
+    
+    static get unscaledTime ()
+    {
+        return this.#uTime;
+    }
+    
+    static get unscaledDeltaTime ()
+    {
+        return this.#uDeltaTime;
+    }
+    
+    static get frameCount ()
+    {
+        return this.#frameIndex;
+    }
+    
+    static get time ()
+    {
+        return this.#time;
+    }
+    
+    static get deltaTime ()
+    {
+        return this.#deltaTime;
+    }
     
     static #requestUpdate ()
     {
@@ -249,18 +285,57 @@ class Loop
     
     static #update ()
     {
-        let dTime = (performance.now() / 1000) - this.time;
+        const slice = (1 / this.targetFrameRate) - 0.005;
         
-        if (dTime > 0.3333333) dTime = 0.3333333;
+        let accumulator = (performance.now() / 1000) - this.#uTime;
         
-        this.deltaTime = dTime;
-        this.time += this.deltaTime;
-        
-        const currentCalls = this.#calls;
-        
-        for (let i = 0; i < currentCalls.length; i++) currentCalls[i]();
+        while (accumulator >= slice)
+        {
+            this.#uDeltaTime = (performance.now() / 1000) - this.#uTime;
+            this.#uTime += this.#uDeltaTime;
+            
+            let deltaT = this.#uDeltaTime;
+            
+            if (deltaT > this.maximumDeltaTime) deltaT = this.maximumDeltaTime;
+            
+            this.#deltaTime = deltaT * this.timeScale;
+            this.#time += this.#deltaTime;
+            
+            this.#invoke();
+            
+            if (this.timeScale != 0) this.#frameIndex++;
+            
+            accumulator -= slice;
+        }
         
         this.#requestUpdate();
+    }
+    
+    static #invoke ()
+    {
+        const currentCalls = this.#calls;
+        
+        let newCalls = [];
+        
+        for (let i = 0; i < currentCalls.length; i++)
+        {
+            const currentCall = currentCalls[i];
+            
+            currentCall.time += this.#deltaTime;
+            
+            if (currentCall.time > (typeof currentCall.timeout === "function" ? currentCall.timeout() : currentCall.timeout))
+            {
+                currentCall.callback();
+                
+                if (currentCall.temp) continue;
+                else currentCall.time = 0;
+            }
+            
+            if (newCalls.length === 0) newCalls[0] = currentCall;
+            else newCalls.push(currentCall);
+        }
+        
+        this.#calls = newCalls;
     }
     
     static init ()
@@ -272,10 +347,21 @@ class Loop
         this.#requestUpdate();
     }
     
-    static append (callback)
+    static append (callback, data)
     {
-        if (this.#calls.length === 0) this.#calls[0] = callback;
-        else this.#calls.push(callback);
+        if (callback == null) throw new Error("Data needed for class method 'Loop.append' is undefined");
+        
+        const dat = data ?? { };
+        
+        const newCall = {
+            callback : callback,
+            temp : dat.temporary ?? false,
+            timeout : dat.delay ?? 0,
+            time : 0
+        };
+        
+        if (this.#calls.length === 0) this.#calls[0] = newCall;
+        else this.#calls.push(newCall);
     }
 }
 
@@ -293,15 +379,15 @@ class screenTrans
         
         if (!data.openedfromssos)
         {
-            data.html.body.style.transition = `opacity ${this.fadeTime}s`;
+            data.html.body.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
             
-            data.html.footer.style.transition = `transform ${this.fadeTime}s`;
+            data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
         }
         
         data.html.content.style.opacity = "1.0";
-        data.html.content.style.transition = `opacity ${this.fadeTime}s`;
+        data.html.content.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
         
-        await data.delay(1250 * this.fadeTime);
+        await data.delay(this.fadeTime);
         
         data.html.content.setAttribute("data-scrollable", "true");
         
@@ -338,9 +424,9 @@ class screenTrans
                 {
                     data.html.body.style.animation = "none";
                     
-                    data.html.body.style.animation = "shake 0.125s";
+                    data.html.body.style.animation = `shake ${0.125 / Loop.timeScale}s`;
                     
-                    await data.delay(125);
+                    await data.delay(0.125);
                     
                     data.html.body.style.animation = "none";
                     
@@ -355,19 +441,19 @@ class screenTrans
                 {
                     cookieJar.setCookie("openedfromssos", true);
                     
-                    data.html.content.style.opacity = "0.0";
-                    data.html.content.style.transition = `opacity ${0.5 * this.fadeTime}s`;
+                    data.html.content.style.opacity = "0";
+                    data.html.content.style.transition = `opacity ${0.5 * this.fadeTime / Loop.timeScale}s`;
                 }
                 else
                 {
-                    data.html.body.style.opacity = "0.0";
-                    data.html.body.style.transition = `opacity ${0.5 * this.fadeTime}s`;
+                    data.html.body.style.opacity = "0";
+                    data.html.body.style.transition = `opacity ${0.5 * this.fadeTime / Loop.timeScale}s`;
                     
                     data.html.footer.style.transform = "translateY(100%)";
-                    data.html.footer.style.transition = `transform ${0.5 * this.fadeTime}s`;
+                    data.html.footer.style.transition = `transform ${0.5 * this.fadeTime / Loop.timeScale}s`;
                 }
                 
-                await data.delay(500 * this.fadeTime);
+                await data.delay(0.5 * this.fadeTime);
                 
                 window.location.href = target;
             };
@@ -478,150 +564,3 @@ Data.once("OnDataLoad", async () => {
     
     ScrollBar.Toggle(true);
 });
-
-
-/*
-// ----------Scrollbar
-function ScrollBar ()
-{
-    ThrowError(1);
-}
-
-ScrollBar.setBars = function (state)
-{
-    if (this.scrollInterval != null)
-    {
-        clearInterval(this.scrollInterval);
-        
-        this.barUp.remove();
-        this.barDown.remove();
-        
-        if (!state)
-        {
-            if (this.scrollInterval == null) ThrowError(2);
-            return this.scrollInterval = null;
-        }
-        
-        this.scrollInterval = null;
-    }
-    
-    this.scrollBar = document.querySelector(".scrollBar");
-    let _barUp = document.createElement("div");
-    let _barDown = document.createElement("div");
-    let _barArrowUp = document.createElement("div");
-    let _barArrowDown = document.createElement("div");
-    let barImg1 = document.createElement("img");
-    let barImg2 = document.createElement("img");
-    
-    _barUp.classList.add("scrollBarUp");
-    _barDown.classList.add("scrollBarDown");
-    barImg1.classList.add("unselectable");
-    barImg2.classList.add("unselectable");
-    _barUp.style.visibility = "hidden";
-    _barDown.style.visibility = "hidden";
-    
-    let imgSrc = "/img/spr_ui12-12.png"; 
-    
-    barImg1.src = imgSrc;
-    barImg2.src = imgSrc;
-    
-    _barArrowUp.appendChild(barImg1);
-    _barArrowDown.appendChild(barImg2);
-    _barUp.appendChild(_barArrowUp);
-    _barDown.appendChild(_barArrowDown);
-    
-    this.scrollBar.appendChild(_barUp);
-    this.scrollBar.appendChild(_barDown);
-    
-    this.barUp = document.querySelector(".scrollBarUp");
-    this.barDown = document.querySelector(".scrollBarDown");
-    
-    this.content = document.querySelector("#mainContent");
-    
-    this.barUp.onmousedown = () => { this.MoveScroll(-10); };
-    this.barDown.onmousedown = () => { this.MoveScroll(10); };
-    this.barUp.onmouseup = () => { this.StopScroll(); };
-    this.barDown.onmouseup = () => { this.StopScroll(); };
-    window.onmouseover = () => { this.StopScroll(); };
-    
-    this.barUp.ontouchstart = () => { this.MoveScroll(-10); };
-    this.barDown.ontouchstart = () => { this.MoveScroll(10); }
-    
-    this.detectScreen();
-};
-
-ScrollBar.detectScreen = function ()
-{
-    this.scrollInterval = setInterval(() => {
-        let scrollPos = this.content.scrollTop / (this.content.scrollHeight - this.content.clientHeight);
-        
-        if (!isNaN(scrollPos))
-        {
-            if (scrollPos <= 0)
-            {
-                this.barUp.style.visibility = "hidden";
-                this.barDown.style.visibility = "visible";
-            }
-            else if (scrollPos >= 1)
-            {
-                this.barUp.style.visibility = "visible";
-                this.barDown.style.visibility = "hidden";
-            }
-            else
-            {
-                this.barUp.style.visibility = "visible";
-                this.barDown.style.visibility = "visible";
-            }
-        }
-        else
-        {
-            this.barUp.style.visibility = "hidden";
-            this.barDown.style.visibility = "hidden";
-        }
-    }, 16.67);
-};
-
-ScrollBar.MoveScroll = function (amount)
-{
-    this.moveInterval = setInterval(() => {
-        let towardsPos = this.content.scrollTop + amount;
-        this.content.scrollTop = towardsPos;
-    }, 16.67);
-};
-
-ScrollBar.StopScroll = function ()
-{
-    if (this.moveInterval != null) clearInterval(this.moveInterval);
-};
-
-
-// ----------Debugging
-function ThrowError (errorCode)
-{
-    var errorText;
-    
-    switch (errorCode)
-    {
-        case 0:
-            errorText = "Value was unassigned or invalid";
-            break;
-        case 1:
-            errorText = "Using static class as a function";
-            break;
-        case 2:
-            errorText = "There is no instance to work with";
-            break;
-        case 3:
-            errorText = "File or source is invalid";
-            break;
-    }
-    
-    errorText += `\nError Code: ${errorCode}`;
-    
-    alert(errorText);
-    console.error(errorText);
-    throw new Error(errorText);
-}
-//luma
-
-*/
