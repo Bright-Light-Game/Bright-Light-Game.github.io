@@ -1,53 +1,49 @@
-function Updates ()
-{
-    ThrowError(1);
-}
+Data.once("WhileDataLoading", () => {
+    Updates.init();
+});
 
-Updates.load = function ()
-{
-    let request = new XMLHttpRequest();
-    
-    request.onload = () => {
-        if (request.status < 400)
-        {
-            this.updatesData = JSON.parse(request.responseText);
-            this.setArticles();
-        }
-    };
-    
-    request.onerror = () => {
-        ThrowError(3);
-    };
-    
-    request.open("GET", "/data/updates.json");
-    request.overrideMimeType("application/json");
-    request.send();
-};
 
-Updates.setArticles = function ()
+class Updates
 {
-    this.mainContent = document.querySelector("#mainContent");
+    static #loaded = false;
     
-    for (let i = 0; i < this.updatesData.length; i++)
+    static async init ()
     {
-        let article = document.createElement("article");
-        let header = document.createElement("div");
-        let title = document.createElement("div");
-        let date = document.createElement("div");
-        let content = document.createElement("div");
+        if (this.#loaded) return;
         
-        article.classList.add("updateArticle");
-        header.classList.add("updateHeader");
-        title.classList.add("updateTitle");
-        date.classList.add("updateDate");
-        content.classList.add("updateContent");
+        const response = await fetch("/data/updates.json");
+        const dat = await response.json();
         
-        title.innerHTML = this.updatesData[i].title;
-        date.innerHTML = this.updatesData[i].date;
-        content.innerHTML = this.updatesData[i].content;
+        for (let i = 0; i < dat.length; i++)
+        {
+            const article = document.createElement("article");
+            const header = document.createElement("div");
+            const title = document.createElement("div");
+            const date = document.createElement("div");
+            const content = document.createElement("div");
+            
+            article.classList.add("updateArticle");
+            header.classList.add("updateHeader");
+            title.classList.add("updateTitle");
+            date.classList.add("updateDate");
+            content.classList.add("updateContent");
+            
+            title.append(dat[i].title);
+            date.append(dat[i].date);
+            
+            const parsedContent = marked.parse(dat[i].content, {
+                headerIds : false,
+                mangle : false
+            });
+            
+            content.insertAdjacentHTML("beforeend", parsedContent);
+            
+            header.append(title, date);
+            article.append(header, content);
+            
+            data.html.content.append(article);
+        }
         
-        header.append(title, date);
-        article.append(header, content);
-        this.mainContent.append(article);
+        this.#loaded = true;
     }
-};
+}
