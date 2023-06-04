@@ -26,7 +26,7 @@ class FAQ
             
             question.append(data[i].question);
             
-            const parseAnswer = marked.parse(data[i].answer, {
+            const parsedAnswer = marked.parse(data[i].answer, {
                 headerIds : false,
                 mangle : false
             });
