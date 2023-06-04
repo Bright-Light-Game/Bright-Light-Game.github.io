@@ -1,5 +1,5 @@
-Data.once("WhileDataLoading", () => {
-    FAQ.init();
+Data.once("WhileDataLoading", async () => {
+    await FAQ.init();
 });
 
 

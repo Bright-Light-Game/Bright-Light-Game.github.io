@@ -1,5 +1,5 @@
-Data.once("WhileDataLoading", () => {
-    Updates.init();
+Data.once("WhileDataLoading", async () => {
+    await Updates.init();
 });
 
 
