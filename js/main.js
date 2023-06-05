@@ -371,22 +371,54 @@ class screenTrans
     
     static fadeTime = 1;
     
+    static Set ()
+    {
+        if (this.#loaded) return;
+        
+        data.html.body.style.opacity = "1";
+        data.html.footer.style.transform = "none";
+        
+        if (!data.openedfromssos)
+        {
+            data.html.body.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
+                
+            data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
+        }
+        
+        Data.once("OnDataLoad", async () => {
+            data.html.content.style.opacity = "1";
+            data.html.content.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
+            
+            await data.delay(this.fadeTime);
+            
+            data.html.content.setAttribute("data-scrollable", "true");
+            
+            data.html.body.style.pointerEvents = "all";
+            data.html.body.style.transition = "none";
+            data.html.footer.style.transition = "none";
+            
+            ScrollBar.Toggle(true);
+        });
+        
+        this.#loaded = true;
+        
+        Loop.append(() => { this.ScanAnchors(); });
+    }
+    
     static ScanAnchors ()
     {
         const pageAnc = document.querySelectorAll("a:not([target='_blank'])");
         
-        for (let iA = 0; iA < pageAnc.length; iA++)
+        for (let i = 0; i < pageAnc.length; i++)
         {
             let valid = true;
             
-            for (let iB = 0; iB < pageAnc[iA].href.length; iB++) if (pageAnc[iA].href[iB] === "#") valid = false;
+            if (pageAnc[i].href[0] === "#") return;
             
-            if (!valid) return;
-            
-            pageAnc[iA].onclick = async e => {
+            pageAnc[i].onclick = async e => {
                 e.preventDefault();
                 
-                const target = pageAnc[iA].href;
+                const target = pageAnc[i].href;
                 
                 let invalidTarget = false;
                 
@@ -439,40 +471,6 @@ class screenTrans
                 window.location.href = target;
             };
         }
-    }
-    
-    static Set ()
-    {
-        if (this.#loaded) return;
-        
-        data.html.body.style.opacity = "1";
-        data.html.footer.style.transform = "none";
-        
-        if (!data.openedfromssos)
-        {
-            data.html.body.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
-                
-            data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
-        }
-        
-        Data.once("OnDataLoad", async () => {
-            data.html.content.style.opacity = "1";
-            data.html.content.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
-            
-            await data.delay(this.fadeTime);
-            
-            data.html.content.setAttribute("data-scrollable", "true");
-            
-            data.html.body.style.pointerEvents = "all";
-            data.html.body.style.transition = "none";
-            data.html.footer.style.transition = "none";
-            
-            ScrollBar.Toggle(true);
-        });
-        
-        this.#loaded = true;
-        
-        Loop.append(() => { this.ScanAnchors(); });
     }
 }
 
