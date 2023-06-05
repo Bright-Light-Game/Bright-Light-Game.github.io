@@ -257,6 +257,8 @@ footer .buttonObject img
 .faq-answer
 {
     margin-top : 4px;
+    margin-bottom : 32px;
+    white-space : pre-wrap;
 }
 
 /*-----Objects*/
@@ -349,11 +351,6 @@ footer .buttonObject img
     width : auto;
 }
 
-.updateArticle p
-{
-    margin : 0;
-}
-
 .updateHeader
 {
     display : flex;
@@ -366,6 +363,11 @@ footer .buttonObject img
 .updateDate
 {
     direction : rtl;
+}
+
+.updateContent p
+{
+    white-space : pre-wrap;
 }
 
 .updateContent img
