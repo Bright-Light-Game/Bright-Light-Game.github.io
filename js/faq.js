@@ -28,15 +28,16 @@ class FAQ
             
             question.append(data[i].question);
             
-            let parsedAnswer = "";
+            let parsedAnswer = data[i].answer;
             
-            /*if (data[i].evaluated)
+            if (data[i].evaluated)
             {
-                const evalCall = eval(data[i].answer);
+                const evalCall = eval(parsedAnswer);
                 
                 parsedAnswer = await evalCall();
             }
-            else*/ parsedAnswer = marked.parse(data[i].answer, {
+            
+            parsedAnswer = marked.parse(parsedAnswer, {
                 headerIds : false,
                 mangle : false
             });

@@ -448,14 +448,14 @@ class screenTrans
         data.html.body.style.opacity = "1";
         data.html.footer.style.transform = "none";
         
-        Data.once("OnDataLoad", async () => {
-            if (!data.openedfromssos)
-            {
-                data.html.body.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
+        if (!data.openedfromssos)
+        {
+            data.html.body.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
                 
-                data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
-            }
-            
+            data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
+        }
+        
+        Data.once("OnDataLoad", async () => {
             data.html.content.style.opacity = "1";
             data.html.content.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
             
