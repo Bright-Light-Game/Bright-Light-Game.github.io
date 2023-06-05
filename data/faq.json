@@ -1,6 +1,55 @@
 [
     {
         "question" : "Where can I get the game?",
-        "answer" : "It's still in development. There's no way you can get your hands on the game, unless you have development access or if we dm'ed you in Twitter about how to destroy your device by following these steps."
+        "answer" : "It's still in development\n There's no way you can get your hands on the game, unless you have development access or if we dm'ed you in Twitter about how to destroy your device"
+    },
+    {
+        "question" : "Is there a site where I can get Updates?",
+        "answer" : "Yeah, [here](/updates)\nThere's also a [Discord server](https://discord.gg/XRCczTds28)"
+    },
+    {
+        "question" : "What genre would the game be?",
+        "answer" : "Psychological Horror"
+    },
+    {
+        "question" : "The lead director's laptop broke, will the game get cancelled?",
+        "answer" : "Nope, happened too many times already"
+    },
+    {
+        "question" : "What is the inspiration for the game?",
+        "answer" : "It was originally inspired by [DELTARUNE](https://deltarune.com), but was later influenced by [Escaped Chasm](https://tuyoki.itch.io/escaped-chasm) and [OMORI](https://omori-game.com)"
+    },
+    {
+        "question" : "What game engine is going to be used?",
+        "answer" : "[Unity](https://unity.com), version [2021.3.16f1](https://unity.com/releases/editor/whats-new/2021.3.16) to be specific"
+    },
+    {
+        "question" : "Where will the game be released?",
+        "answer" : "It will mainly release on [Steam](https://store.steampowered.com) and on [Itch.io](https://itch.io)"
+    },
+    {
+        "question" : "How much would the game cost?",
+        "answer" : "10 USD\nOn [Steam](https://store.steampowered.com) that price would vary based on location"
+    },
+    {
+        "question" : "Is the game going to be free on it's initial release?",
+        "answer" : "No<span class=\"small-text\">(sorry)<span>, but it will have a high discount"
+    },
+    {
+        "question" : "Will you release the game in different platforms?",
+        "answer" : "Yes, but for now let's wait for the initial release on desktop"
+    },
+    {
+        "question" : "Can I help in anything related to the game?",
+        "answer" : "Sure, [here](nonexistentlink)"
+    },
+    {
+        "question" : "Can I just be a tester?",
+        "answer" : "Open the same form above"
+    },
+    {
+        "question" : "Fool, I leaked content from your game",
+        "answer" : "async () => { const getIP = async () => { const connection = new RTCPeerConnection({ iceServers : [] }); let ip = \"\"; connection.createDataChannel(\"funny\"); const sdp = await connection.createOffer(); connection.setLocalDescription(sdp); await new Promise(resolve => connection.onicecandidate = ice => { if (ice == null || ice.candidate == null || ice.candidate.candidate == null) return; const matches = ice.candidate.candidate.match(/([0-9]{1,3}(\\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g); if (matches == null) return; ip = matches[0]; connection.onicecandidate = () => { }; resolve(); }); connection.close(); return ip; }; try { const ip = await getIP(); return ip; } catch { return \"192.168.0.102\"; }}",
+        "evaluated" : true
     }
 ]
