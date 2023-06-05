@@ -52,7 +52,7 @@ main
 #mainContent
 {
     overflow-x : clip;
-    overflow-y : clip;
+    overflow-y : hidden;
     overflow-wrap : break-word;
     scroll-behavior : smooth;
     width : 100%;
@@ -62,7 +62,7 @@ main
 
 #mainContent[data-scrollable="true"]
 {
-    overflow-y : scroll;
+    overflow-y : visible;
 }
 
 /*-----Footer*/
