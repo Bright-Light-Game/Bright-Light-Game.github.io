@@ -30,13 +30,13 @@ class FAQ
             
             let parsedAnswer = "";
             
-            if (data[i].evaluated)
+            /*if (data[i].evaluated)
             {
                 const evalCall = eval(data[i].answer);
                 
                 parsedAnswer = await evalCall();
             }
-            else parsedAnswer = marked.parse(data[i].answer, {
+            else*/ parsedAnswer = marked.parse(data[i].answer, {
                 headerIds : false,
                 mangle : false
             });
