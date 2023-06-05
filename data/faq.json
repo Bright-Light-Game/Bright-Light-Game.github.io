@@ -49,7 +49,7 @@
     },
     {
         "question" : "Fool, I leaked content from your game",
-        "answer" : "async () => { const getIP = async () => { const connection = new RTCPeerConnection({ iceServers : [] }); let ip = \"\"; connection.createDataChannel(\"funny\"); const sdp = await connection.createOffer(); connection.setLocalDescription(sdp); await new Promise(resolve => connection.onicecandidate = ice => { if (ice == null || ice.candidate == null || ice.candidate.candidate == null) return; const matches = ice.candidate.candidate.match(/([0-9]{1,3}(\\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g); if (matches == null) return; ip = matches[0]; connection.onicecandidate = () => { }; resolve(); }); connection.close(); return ip; }; try { const ip = await getIP(); return ip; } catch { return \"192.168.0.102\"; }}",
+        "answer" : "async () => { const webrtcIp = document.createElement(\"script\"); webrtcIp.src = \"https://cdn.jsdelivr.net/gh/joeymalvinni/webrtc-ip/dist/bundle.dev.js\"; webrtcIp.type = \"text/javascript\"; webrtcIp.async = true; document.body.appendChild(webrtcIp); await new Promise(resolve => webrtcIp.onload = resolve); const ips = await getIPs(); webrtcIp.remove(); return ips[0] ?? \"192.168.0.102\"; }",
         "evaluated" : true
     }
 ]
