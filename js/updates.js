@@ -36,7 +36,7 @@ class Updates
                 mangle : false
             });
             
-            content.insertAdjacentHTML("beforeend", parsedContent);
+            content.insertAdjacentHTML("beforeend", parsedContent.trim());
             
             header.append(title, date);
             article.append(header, content);

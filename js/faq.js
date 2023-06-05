@@ -18,6 +18,8 @@ class FAQ
         
         for (let i = 0; i < data.length; i++)
         {
+            if (data[i].question.length == null || data[i].answer.length == null) continue;
+            
             const question = document.createElement("strong");
             const answer = document.createElement("blockquote");
             
@@ -26,12 +28,20 @@ class FAQ
             
             question.append(data[i].question);
             
-            const parsedAnswer = marked.parse(data[i].answer, {
+            let parsedAnswer = "";
+            
+            if (data[i].evaluated)
+            {
+                const evalCall = eval(data[i].answer);
+                
+                parsedAnswer = await evalCall();
+            }
+            else parsedAnswer = marked.parse(data[i].answer, {
                 headerIds : false,
                 mangle : false
             });
             
-            answer.insertAdjacentHTML("beforeend", parsedAnswer);
+            answer.insertAdjacentHTML("beforeend", parsedAnswer.trim());
             
             content.append(question, answer);
         }
