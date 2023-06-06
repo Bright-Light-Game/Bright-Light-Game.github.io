@@ -157,7 +157,7 @@ noscript div
     padding : 0;
 }
 
-.navList div
+.navList li
 {
     margin : space-between;
     padding : 8px;
