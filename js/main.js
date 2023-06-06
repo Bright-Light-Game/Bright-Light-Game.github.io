@@ -213,17 +213,17 @@ class Data
         data.html.content = document.querySelector("#mainContent");
         data.html.footer = document.querySelector("footer");
         
-        const dataRequest = await fetch("/data/data.json");
-        
-        const newData = await dataRequest.json();
-        
-        data.samestyleoriginsites = newData.samestyleoriginsites;
-        
         data.openedfromssos = cookieJar.getCookie("openedfromssos") === "true";
         
         cookieJar.removeCookie("openedfromssos");
         
         await this.#callEvent("WhileDataLoading");
+        
+        const dataRequest = await fetch("/data/data.json");
+        
+        const newData = await dataRequest.json();
+        
+        data.samestyleoriginsites = newData.samestyleoriginsites;
         
         await new Promise(resolve => setTimeout(resolve, 5));
         
