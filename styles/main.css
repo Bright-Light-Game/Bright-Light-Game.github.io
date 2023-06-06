@@ -39,7 +39,8 @@ body
 
 header
 {
-    padding : 2px 0px;
+    margin : 2px 0px;
+    border-bottom : 2px solid white;
 }
 
 main
@@ -156,7 +157,7 @@ noscript div
     padding : 0;
 }
 
-.navList li
+.navList div
 {
     margin : space-between;
     padding : 8px;
@@ -166,13 +167,6 @@ noscript div
 .currentPage
 {
     font-weight : bolder;
-}
-
-.line
-{
-    background : white;
-    border : none;
-    height : 1px;
 }
 
 /*-----Footer*/
