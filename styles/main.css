@@ -62,7 +62,7 @@ main
 
 #mainContent[data-scrollable="true"]
 {
-    overflow-y : visible;
+    overflow-y : scroll;
 }
 
 /*-----Footer*/
