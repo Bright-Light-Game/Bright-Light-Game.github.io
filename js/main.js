@@ -198,6 +198,7 @@ class Data
                 continue;
             }
             
+            console.log(listener.callback);
             await listener.callback();
             
             listener.called = true;
