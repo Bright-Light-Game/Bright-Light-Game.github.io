@@ -198,7 +198,6 @@ class Data
                 continue;
             }
             
-            console.log(listener.callback);
             await listener.callback();
             
             listener.called = true;
@@ -376,13 +375,14 @@ class screenTrans
     {
         if (this.#loaded) return;
         
-        data.html.body.style.opacity = "1";
-        data.html.footer.style.transform = "none";
-        
         if (!data.openedfromssos)
         {
+            data.html.body.style.opacity = "0";
+            data.html.body.style.opacity = "1";
             data.html.body.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
-                
+            
+            data.html.footer.style.transform = "translateY(100%)";
+            data.html.footer.style.transform = "none";
             data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
         }
         
