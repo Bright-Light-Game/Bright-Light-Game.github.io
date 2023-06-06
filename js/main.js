@@ -223,9 +223,9 @@ class Data
         
         cookieJar.removeCookie("openedfromssos");
         
-        await new Promise(resolve => setTimeout(resolve, 5));
-        
         await this.#callEvent("WhileDataLoading");
+        
+        await new Promise(resolve => setTimeout(resolve, 5));
         
         await this.#callEvent("OnDataLoad");
     }
@@ -375,14 +375,12 @@ class screenTrans
     {
         if (this.#loaded) return;
         
+        data.html.body.style.opacity = "1";
+        data.html.footer.style.transform = "none";
+        
         if (!data.openedfromssos)
         {
-            data.html.body.style.opacity = "0";
-            data.html.body.style.opacity = "1";
             data.html.body.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
-            
-            data.html.footer.style.transform = "translateY(100%)";
-            data.html.footer.style.transform = "none";
             data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
         }
         
