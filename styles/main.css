@@ -33,7 +33,6 @@ body
     display : flex;
     flex-direction : column;
     text-size-adjust : none;
-    opacity : 0;
     pointer-events : none;
 }
 
@@ -70,7 +69,6 @@ footer
 {
     background : white;
     color : black;
-    transform : translateY(100%);
     padding : 2px;
     border-top : 2px solid black;
     font-family : small-spaces;
