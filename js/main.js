@@ -423,9 +423,11 @@ class screenTrans
                 
                 try
                 {
-                    const request = await fetch(target);
+                    const request = await fetch(target, {
+                        mode : "no-cors"
+                    });
                     
-                    if (request.status !== 200 && request.status !== 404) invalidTarget = true;
+                    if (request.status > 200 && request.status !== 404) invalidTarget = true;
                 }
                 catch
                 {
