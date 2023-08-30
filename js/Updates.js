@@ -48,7 +48,7 @@ class Updates
             header.append(title, date);
             article.append(header, content);
             
-            data.html.content.append(article);
+            Data.html.content.append(article);
         }
         
         this.#loaded = true;
