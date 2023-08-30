@@ -1,12 +1,7 @@
 [
     {
-        "title" : "Title",
-        "date" : "Date",
-        "content" : "Content\nContent but looooooooooooooooooooooooooong\n![img](/img/seo/seoImage.png)"
-    },
-    {
-        "title" : "Another one",
-        "date" : "April 22, 2022",
-        "content" : "Woah, it works. Hi"
+        "title" : "How long should titles even be?",
+        "date" : 1693399912352,
+        "content" : "Woaaaaaaaaaaaaaaaaaah, progress here is being made. Dynamic dates funny."
     }
 ]
