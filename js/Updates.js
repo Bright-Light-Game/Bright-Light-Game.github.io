@@ -11,6 +11,8 @@ class Updates
     {
         if (this.#loaded) return;
         
+        await Data.LoadScript("https://cdn.jsdelivr.net/npm/marked/marked.min.js");
+        
         const response = await fetch("/data/updates.json");
         const dat = await response.json();
         

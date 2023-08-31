@@ -11,6 +11,8 @@ class FAQ
     {
         if (this.#loaded) return;
         
+        await Data.LoadScript("https://cdn.jsdelivr.net/npm/marked/marked.min.js");
+        
         const content = document.querySelector("#faq");
         
         const response = await fetch("/data/faq.json");

@@ -178,6 +178,19 @@ class Data
         return await URL.createObjectURL(blob);
     }
     
+    static async LoadScript (src)
+    {
+        const script = document.createElement("script");
+        
+        script.src = src;
+        script.type = "text/javascript";
+        script.async = true;
+        
+        this.html.body.appendChild(script);
+        
+        await new Promise(resolve => script.addEventListener("load", resolve));
+    }
+    
     static async Init ()
     {
         this.html.body = document.body;
