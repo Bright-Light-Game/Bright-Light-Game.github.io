@@ -186,7 +186,7 @@ class Data
         script.type = "text/javascript";
         script.async = true;
         
-        this.html.body.appendChild(script);
+        this.html.body.append(script);
         
         await new Promise(resolve => script.addEventListener("load", resolve));
     }
@@ -210,7 +210,7 @@ class Data
         
         this.#sSOS = newData.samestyleoriginsites;
         
-        await new Promise(resolve => setTimeout(resolve, 5));
+        await new Promise(resolve => requestAnimationFrame(resolve));
         
         await this.#CallEvent("OnDataLoad");
     }
@@ -354,8 +354,6 @@ class ScreenTrans
 {
     static #loaded = false;
     
-    static fadeTime = 1;
-    
     static Set ()
     {
         if (this.#loaded) return;
@@ -365,15 +363,15 @@ class ScreenTrans
         
         if (!Data.openedFromSSOS)
         {
-            Data.html.body.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
-            Data.html.footer.style.transition = `transform ${this.fadeTime / Loop.timeScale}s`;
+            Data.html.body.style.transition = `opacity ${Loop.timeScale}s`;
+            Data.html.footer.style.transition = `transform ${Loop.timeScale}s`;
         }
         
         Data.Once("OnDataLoad", async () => {
             Data.html.content.style.opacity = "1";
-            Data.html.content.style.transition = `opacity ${this.fadeTime / Loop.timeScale}s`;
+            Data.html.content.style.transition = `opacity ${Loop.timeScale}s`;
             
-            await Loop.Delay(this.fadeTime);
+            await Loop.Delay(1);
             
             Data.html.content.setAttribute("data-scrollable", "true");
             
@@ -436,23 +434,25 @@ class ScreenTrans
                 
                 Data.html.body.style.pointerEvents = "none";
                 
+                const time = 0.5 / Loop.timeScale;
+                
                 if (Data.IsSSOS(target))
                 {
                     CookieJar.SetCookie("fromSSOS", true);
                     
                     Data.html.content.style.opacity = "0";
-                    Data.html.content.style.transition = `opacity ${0.5 * this.fadeTime / Loop.timeScale}s`;
+                    Data.html.content.style.transition = `opacity ${time}s`;
                 }
                 else
                 {
                     Data.html.body.style.opacity = "0";
-                    Data.html.body.style.transition = `opacity ${0.5 * this.fadeTime / Loop.timeScale}s`;
+                    Data.html.body.style.transition = `opacity ${time}s`;
                     
                     Data.html.footer.style.transform = "translateY(100%)";
-                    Data.html.footer.style.transition = `transform ${0.5 * this.fadeTime / Loop.timeScale}s`;
+                    Data.html.footer.style.transition = `transform ${time}s`;
                 }
                 
-                await Loop.Delay(0.5 * this.fadeTime);
+                await Loop.Delay(0.5);
                 
                 window.location.href = target;
             };
