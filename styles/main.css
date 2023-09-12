@@ -17,6 +17,11 @@ html, body
     padding : 0;
 }
 
+body > :not(main)
+{
+    user-select : none;
+}
+
 /*-----Sections*/
 body
 {
@@ -246,12 +251,6 @@ footer .buttonObject img
 }
 
 /*-----Objects*/
-.unselectable
-{
-    user-select : none;
-    pointer-events : none;
-}
-
 .cursorObject
 {
     animation : cursorObject linear 1s infinite;
