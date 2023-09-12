@@ -208,6 +208,7 @@ footer .buttonObject img
 {
     position : relative;
     height : calc(30 * var(--pixel-unit));
+    pointer-events : none;
 }
 
 .btn_twt img
@@ -317,6 +318,7 @@ footer .buttonObject img
     top : calc(-12 * var(--pixel-unit));
     left : calc(-12 * var(--pixel-unit));
     width : calc(24 * var(--pixel-unit));
+    pointer-events : none;
 }
 
 /*Update Article*/
