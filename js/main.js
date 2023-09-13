@@ -13,6 +13,8 @@ class Data
     
     static #event = null;
     
+    static socials = { };
+    
     static html = {
         body : null,
         main : null,
@@ -209,6 +211,7 @@ class Data
         const newData = await dataRequest.json();
         
         this.#sSOS = newData.samestyleoriginsites;
+        this.socials = newData.socials;
         
         await new Promise(resolve => requestAnimationFrame(resolve));
         
@@ -347,6 +350,30 @@ class Loop
             temporary : true,
             delay : time
         }));
+    }
+}
+
+class Footer
+{
+    static #loaded = false;
+    
+    static Set ()
+    {
+        if (this.#loaded) return;
+        
+        const disc = Data.html.footer.querySelector(".btn_disc");
+        const twt = Data.html.footer.querySelector(".btn_twt");
+        const yt = Data.html.footer.querySelector(".btn_yt");
+        const fb = Data.html.footer.querySelector(".btn_fb");
+        const insta = Data.html.footer.querySelector(".btn_insta");
+        
+        disc.href = Data.socials.discord;
+        twt.href = Data.socials.twitter;
+        yt.href = Data.socials.youtube;
+        fb.href = Data.socials.facebook;
+        insta.href = Data.socials.instagram;
+        
+        this.#loaded = true;
     }
 }
 
@@ -562,5 +589,6 @@ Data.Once("WhileDataLoading", () => {
 });
 
 Data.Once("OnDataLoad", async () => {
+    Footer.Set();
     await ScrollBar.Set();
 });
