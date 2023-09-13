@@ -9,5 +9,12 @@
         "help.html",
         "updates",
         "updates.html"
-    ]
+    ],
+    "socials" : {
+        "discord" : "https://discord.gg/XRCczTds28",
+        "twitter" : "https://twitter.com/StudioPhotonEye",
+        "youtube" : "https://youtube.com/channel/UCrJ4BnvB4VhrJwr1KovO6dw",
+        "facebook" : "https://facebook.com/studiophotoneye",
+        "instagram" : "https://instagram.com/photon.eye"
+    }
 }
